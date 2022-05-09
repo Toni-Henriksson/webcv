@@ -1,16 +1,13 @@
 import {React} from "react";
 import '../css/home.css';
 import NavigationBar from '../components/NavigationBar';
-
-const Register = () => {
+const Profile = () => {
     return (
         <>
         <NavigationBar></NavigationBar>
-        <div>
-            <p>Register here</p>
-        </div>
+        <div></div>
       </>
     );
 }
 
-export default Register;
+export default Profile;
