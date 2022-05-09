@@ -5,7 +5,9 @@ const Login = () => {
     return (
         <>
         <NavigationBar></NavigationBar>
-        <div></div>
+        <div>
+            <p>Login screen</p>
+        </div>
       </>
     );
 }

@@ -1,11 +1,13 @@
 import {React} from "react";
-import '../css/home.css';
+import '../css/profile.css';
 import NavigationBar from '../components/NavigationBar';
 const Profile = () => {
     return (
         <>
         <NavigationBar></NavigationBar>
-        <div></div>
+        <div>
+            <p>Profile screen</p>
+        </div>
       </>
     );
 }

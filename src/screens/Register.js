@@ -7,7 +7,7 @@ const Register = () => {
         <>
         <NavigationBar></NavigationBar>
         <div>
-            <p>Register here</p>
+            <p>Register screen</p>
         </div>
       </>
     );

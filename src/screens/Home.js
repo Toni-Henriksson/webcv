@@ -6,7 +6,9 @@ const Home = () => {
     return (
       <>
         <NavigationBar></NavigationBar>
-        <div></div>
+        <div>
+            <p>Home screen</p>
+        </div>
       </>
     );
 }
