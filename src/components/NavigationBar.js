@@ -10,7 +10,7 @@ const NavigationBar = () => {
     return (
         <Nav className="nav">
             <Link className="logo" to={'/'}path="/">Web CV</Link>
-            <Button className="btn" onClick={loginEvent}><Link className="btnText" to={'login'}path="login">Sign in</Link></Button>
+            <Button className="btn" onClick={loginEvent}><Link className="btnText" to={'login'} path="login">Sign in</Link></Button>
         </Nav>    
     );
 }
