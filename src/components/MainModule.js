@@ -1,12 +1,12 @@
 import {React} from "react";
-import '../css/MainModule.css';
+import '../css/mainmodule.css';
 
 
 const MainModule = () => {
     return (
         <div className="container">
             <div>
-                <input></input>
+                <input className="searchBar" placeholder="Search profile..."></input>
             </div>
         </div>    
     );

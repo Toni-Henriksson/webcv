@@ -1,0 +1,12 @@
+.container{
+    height: 200px;
+}
+.searchBar{
+    width: 40%;
+    height: 100px;
+    border-radius: 35px;
+    display: block;
+    margin: auto;
+    font-size: 38px;
+    text-align: center;
+}
