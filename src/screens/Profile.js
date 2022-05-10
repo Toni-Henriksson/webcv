@@ -6,8 +6,10 @@ const Profile = () => {
     return (
         <>
         <NavigationBar></NavigationBar>
-        <div>
-            <p>Profile screen</p>
+        <div className="profile-wrapper">
+            <div className="resume-render-wrapper">
+                <h1>Resume</h1>
+            </div>
         </div>
       </>
     );

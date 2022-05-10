@@ -1,0 +1,16 @@
+.profile-wrapper{
+    
+}
+h1{
+    text-align: center;
+}
+.resume-render-wrapper{
+    display: block;
+    margin: auto;
+    height: 700px;
+    width: 30%;
+    background-color: white;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+}
