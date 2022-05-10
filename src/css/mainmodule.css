@@ -4,9 +4,29 @@
 .searchBar{
     width: 40%;
     height: 100px;
-    border-radius: 35px;
+    border-radius: 25px;
     display: block;
     margin: auto;
     font-size: 38px;
     text-align: center;
+}
+.register-container{
+    display: block;
+    margin: auto;
+    margin-top: 200px;
+    text-align: center;
+}
+.registerEmailInput{
+    width: 20%;
+    height: 60px;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 25px;
+}
+.registerEmailInput:hover{
+    width: 30%;
+    background-color: rgb(255, 255, 255);
+    transition:ease-in-out;
+    transition-duration: 0.4s;
+    transition-delay: 0.1s;
 }
