@@ -1,3 +1,4 @@
+
 .btn{
     position: absolute;
     right: 0;
@@ -6,6 +7,16 @@
     height: 50px;
     border-radius: 5px;
     margin: 20px;
+    font-size: 28px;
+    background-color: rgb(0, 0, 0);
+}
+.btn:hover{
+    background-color: rgb(107, 109, 255);
+}
+
+.btnText{
+    text-decoration: none;
+    color: aliceblue;
 }
 .nav{
     width: 100%;
@@ -15,3 +26,9 @@
     justify-content: center;
     align-items: center;
 }
+.logo{
+    font-size: 28px;
+    text-decoration: none;
+    color: black;
+}
+
