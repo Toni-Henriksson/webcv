@@ -2,7 +2,7 @@ import {React} from "react";
 import '../css/mainmodule.css';
 
 
-const MainModule = () => {
+const MainRegisterModule = () => {
     return (
         <div className="container">
             <div>
@@ -17,4 +17,4 @@ const MainModule = () => {
     );
 }
 
-export default MainModule;
+export default MainRegisterModule;

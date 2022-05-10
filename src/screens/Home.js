@@ -1,14 +1,14 @@
 import {React} from "react";
 import '../css/home.css';
 import NavigationBar from '../components/NavigationBar';
-import MainModule from '../components/MainModule';
+import MainRegisterModule from '../components/MainRegisterModule';
 
 const Home = () => {
     return (
       <>
       <NavigationBar></NavigationBar>
       <div className="wrapper-content">
-        <MainModule></MainModule>
+        <MainRegisterModule></MainRegisterModule>
       </div>
       </>
     );
