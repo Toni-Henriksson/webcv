@@ -17,6 +17,7 @@
 .btnText{
     text-decoration: none;
     color: aliceblue;
+    margin: auto;
 }
 .nav{
     width: 100%;

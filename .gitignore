@@ -11,6 +11,9 @@
 # production
 /build
 
+# backend secrets
+/src/backend/firebase-config.js
+
 # misc
 .DS_Store
 .env.local

@@ -15,12 +15,16 @@
 .register-container{
     display: block;
     margin: auto;
-    margin-top: 200px;
+    width: 450px;
+    height: 460px;
+    margin-top: 50px;
     text-align: center;
+    background-color: #000000BF;
+    border-radius: 15px;
 }
 .registerEmailInput{
-    width: 20%;
-    height: 60px;
+    width: 80%;
+    height: 50px;
     font-size: 25px;
     text-align: center;
     border-radius: 25px;
@@ -28,7 +32,7 @@
     border-color: rgb(107, 109, 255);
 }
 .registerEmailInput:hover{
-    width: 30%;
+    width: 85%;
     background-color: #f7f7f7;
     transition:ease-in-out;
     transition-duration: 0.4s;
