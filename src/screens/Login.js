@@ -16,8 +16,8 @@ const Login = () => {
         <>
         <NavigationBar></NavigationBar>
         <div className="wrapper-content-login">
-            <input className="login-input" placeholder="Email address"></input>
-            <input className="login-input" placeholder="Password"></input>
+            <input className="login-input" placeholder="Email address" onChange={ (event) => {setLoginEmail(event.target.value)} }></input>
+            <input className="login-input" placeholder="Password" onChange={ (event) => {SetLoginPassword(event.target.value)} }></input>
             <button className="login-btn-01" onClick={() => { userAuth ? navigate("/profile") : navigate("/")}}></button>
         </div>
       </>

@@ -16,8 +16,9 @@ const MainRegisterModule = () => {
             <div className="register-container">
                 <h1>Not a user yet?</h1>
                 <p>Register by typing your email</p>
-                <input className="registerEmailInput" placeholder="Email address" onChange={(event) => {setRegisterEmail(event.target.value)}}></input>
-                <input className="registerEmailInput" placeholder="Password" onChange={(event) => {setRegisterPassword(event.target.value)}}></input>
+                <input className="registerEmailInput" placeholder="Email address" onChange={ (event) => {setRegisterEmail(event.target.value)} }></input>
+                <input className="registerEmailInput" placeholder="Password" onChange={ (event) => {setRegisterPassword(event.target.value)} }></input>
+                <button onClick={register(registerEmail, registerPassword)}>Register</button>
             </div>
         </div>    
     );
