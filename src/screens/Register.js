@@ -2,6 +2,8 @@ import {React} from "react";
 import '../css/home.css';
 import NavigationBar from '../components/NavigationBar';
 import MainRegisterModule from '../components/MainRegisterModule';
+
+// j
 const Register = () => {
     return (
         <>
