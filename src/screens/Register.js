@@ -1,5 +1,5 @@
 import {React} from "react";
-import '../css/register-screen.css';
+import '../css/screens/register-screen.css';
 import NavigationBar from '../components/NavigationBar';
 import MainRegisterModule from '../components/MainRegisterModule';
 

@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import '../css/NavigationBar.css';
+import '../css/components/NavigationBar.css';
 import { auth } from '../backend/firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { logout } from "../backend/firebase-utility";

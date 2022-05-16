@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import '../css/mainmodule.css';
+import '../css/components/mainRegisterModule.css';
 import { register } from '../backend/firebase-utility';
 
 
@@ -10,6 +10,7 @@ const MainRegisterModule = () => {
 
     function handleRegister(){
         register(registerEmail, registerPassword);
+
     }
     return (
         <div className="container">
