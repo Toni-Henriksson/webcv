@@ -1,26 +1,24 @@
 import {React, useState} from "react";
 import '../css/login.css';
 import NavigationBar from '../components/NavigationBar';
-import { useNavigate } from "react-router-dom";
-import { login, logout } from '../backend/firebase-utility';
+import { login } from '../backend/firebase-utility';
 
 const Login = () => {
-    let navigate = useNavigate();
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, SetLoginPassword] = useState("");
     
-    // Will confirm is user is valid and authorized to log in ---> navigate to profile
-    const [userAuth, setUserAuth] = useState(true);
-
+    function handleLogin(){
+        login(loginEmail, loginPassword);
+    }
     return (
         <>
         <NavigationBar></NavigationBar>
         <div className="wrapper-content-login">
             <input className="login-input" placeholder="Email address" onChange={ (event) => {setLoginEmail(event.target.value)} }></input>
             <input className="login-input" placeholder="Password" onChange={ (event) => {SetLoginPassword(event.target.value)} }></input>
-            <button className="login-btn-01" onClick={() => { userAuth ? navigate("/profile") : navigate("/")}}></button>
+            <button className="login-btn-01" onClick={handleLogin}>Login</button>
         </div>
-      </>
+        </>
     );
 }
 

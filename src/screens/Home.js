@@ -8,7 +8,7 @@ const Home = () => {
       <>
       <NavigationBar></NavigationBar>
       <div className="wrapper-content">
-        <MainRegisterModule> </MainRegisterModule>
+        <h1>Home</h1>
       </div>
       </>
     );
