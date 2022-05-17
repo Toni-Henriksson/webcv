@@ -1,6 +1,7 @@
 .nav-wrapper{
-    background-color: rgb(207, 167, 115);
+    background-color: #252424;
     flex-direction: row;
+    margin-top: 0%;
 }
 .nav-header{
     font-size: 45px;

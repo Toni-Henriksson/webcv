@@ -3,5 +3,8 @@
     margin: auto;
     width:700px;
     height: 800px;
-    background-color: blueviolet;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 20px;
+    background-color: azure;
 }
