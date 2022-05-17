@@ -1,5 +1,5 @@
 import './css/App.css';
-import React from 'react';
+import { React } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from './screens/Home';
 import Login from './screens/Login';
@@ -7,6 +7,7 @@ import Register from './screens/Register';
 import Profile from './screens/Profile';
 
 function App() {
+
   return (
     <div className="App">
       <Routes>
@@ -14,6 +15,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="profile" element={<Profile />} />
         <Route path="register" element={<Register />} />
+        <Route path="/:username" element={<Profile />} />
       </Routes>
     </div>
   );

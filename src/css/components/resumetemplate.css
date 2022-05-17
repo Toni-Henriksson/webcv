@@ -8,17 +8,18 @@
     background-color: rgb(230, 114, 36);
     width: 150px;
     height: 100%;
-    margin-left: 50px;
+    margin-left: 20px;
     padding-left: 20px;
     padding-right: 20px;
-
+    flex-wrap: wrap;
 }
 .resume-right-part{
     width: 60%;
     background-color: rgb(255, 255, 255);
     height: 100%;
-    padding-left: 50px;
-    padding-top: 50px;
+    padding-left: 20px;
+    padding-top: 20px;
+    flex-wrap: wrap;
 }
 .resume-right-part-name{
     font-size: 30px;
@@ -57,8 +58,11 @@
     color: rgb(51, 50, 104);
     font-weight: 500;
     font-family: cursive;
+    margin-bottom: 0;
+    font-size: 20px;
 }
 .resume-left-p{
     color: aliceblue;
     font-family: cursive;
+    margin-top: 0;
 }
