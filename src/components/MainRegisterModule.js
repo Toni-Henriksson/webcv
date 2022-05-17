@@ -1,15 +1,18 @@
 import {React, useState} from "react";
 import '../css/components/mainRegisterModule.css';
 import { register } from '../backend/firebase-utility';
+import { useNavigate } from "react-router-dom";
 
 
 
 const MainRegisterModule = () => {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
+    let navigation = useNavigate();
 
     function handleRegister(){
         register(registerEmail, registerPassword);
+        navigation('/profile');
 
     }
     return (

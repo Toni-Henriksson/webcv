@@ -1,7 +1,6 @@
-import {React} from "react";
+import {React, useState} from "react";
 import '../css/screens/home.css';
 import NavigationBar from '../components/NavigationBar';
-import MainRegisterModule from '../components/MainRegisterModule';
 
 const Home = () => {
     return (

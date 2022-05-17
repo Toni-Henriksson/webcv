@@ -1,0 +1,29 @@
+.resume-template-container{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+.resume-left-part{
+    background-color: blue;
+    width: 35%;
+    height: 100%;
+}
+.resume-right-part{
+    width: 60%;
+    background-color: rgb(207, 205, 205);
+    height: 100%;
+    padding-left: 50px;
+
+}
+.resume-right-part-name{
+    font-size: 35px;
+    color: rgb(51, 50, 104);
+    font-weight: 600;
+    margin-bottom: 0%;
+}
+.resume-right-part-title{
+    font-size: 20px;
+    color: rgb(230, 114, 36);
+    font-weight: 400;
+    margin-top: 0;
+}

@@ -2,13 +2,16 @@ import {React, useState} from "react";
 import '../css/screens/login.css';
 import NavigationBar from '../components/NavigationBar';
 import { login } from '../backend/firebase-utility';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, SetLoginPassword] = useState("");
-    
+    let navigation = useNavigate();
+
     function handleLogin(){
         login(loginEmail, loginPassword);
+        navigation('/profile');
     }
     return (
         <>
