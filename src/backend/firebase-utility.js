@@ -26,12 +26,17 @@ export const logout = async () => {
 
 export const writeToDB = async (userId, name, email, imageUrl) => {
     const db = database;
-    set(ref(db, 'users/' + userId), {
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });
-    console.log("Data sent: " + userId + name + email);
+    try{
+        set(ref(db, 'users/' + userId), {
+            username: name,
+            email: email,
+            profile_picture : imageUrl
+          });
+          console.log("Data sent: " + userId + name + email); 
+    }catch(error){
+        console.log(error.message);
+    }
+
 };
 
 export const readFromDB = async (userId) => {

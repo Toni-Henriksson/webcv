@@ -23,7 +23,7 @@ const NavigationBar = () => {
         navigation('/register');
     }
     function testDB(){
-        writeToDB("testUID", "TestiToni", "toni@toni.fi", "c/image/testi");
+        writeToDB("Uest2UID", "XstiToni", "Xni@toni.fi", "X/image/testi");
     }
     return (
         <>
