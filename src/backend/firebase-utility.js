@@ -5,6 +5,9 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 export const register = async (email, password) => {
     try{
         const user = await createUserWithEmailAndPassword(auth, email, password);
+
+        // Creates database template for newly created user
+        writeToDB(user.user.uid, email, "", "", "");
         console.log(user);
     }catch(error){
         console.log(error.message);
@@ -14,7 +17,7 @@ export const register = async (email, password) => {
 export const login = async (email, password) => {
     try{
         const user = await signInWithEmailAndPassword(auth, email, password);
-        console.log(user);
+        console.log("User logged in, UID is: " + user.user.uid);
     }catch(error){
         console.log(error.message);
     }
@@ -24,13 +27,15 @@ export const logout = async () => {
     await signOut(auth);
 };
 
-export const writeToDB = async (userId, name, email, imageUrl) => {
+export const writeToDB = async (userId, name, email, imageUrl, education) => {
     const db = database;
     try{
         set(ref(db, 'users/' + userId), {
             username: name,
             email: email,
-            profile_picture : imageUrl
+            profile_picture : imageUrl,
+            education: education,
+
           });
           console.log("Data sent: " + userId + name + email); 
     }catch(error){

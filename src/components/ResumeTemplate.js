@@ -1,17 +1,31 @@
-import {React, useState} from "react";
+import {React, useEffect, useState} from "react";
 import '../css/components/resumetemplate.css';
-
+import { readFromDB } from "../backend/firebase-utility";
+import { auth } from '../backend/firebase-config';
 
 const ResumeTemplate = () => {
-
     const [name, setName] = useState("TONI HENRIKSSON");
     const [title, setTitle] = useState("Computer Science Major");
-    const [education, setEducation] = useState("University of Applied Sciences");
+    const [education, setEducation] = useState("");
     const [jobs, setJobs] = useState("Web developer");
-
     const profileImage = require('../images/claymonster.png');
-    
 
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+        fetchData();
+    },[])
+
+    const fetchData = async () => {
+        // Get user uid
+        let userId = auth.currentUser.uid;
+
+        // read users database data based on uid
+        let dbData = readFromDB(userId);
+        console.log(dbData);
+
+        // Now just need to get info from dbData and set it to states, then render states to corresponding places on screen. 
+    }
     return (
         <div className="resume-template-container">
             <div className="resume-left-part">
