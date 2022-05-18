@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 
 const Profile = () => {
     const params = useParams();
-    
+    // TODO: search firebase DB for user matching params name and render that to profile component
     return (
         <>
         <NavigationBar></NavigationBar>
