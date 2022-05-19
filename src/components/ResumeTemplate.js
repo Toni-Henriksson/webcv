@@ -7,34 +7,31 @@ import { getDatabase, onValue, ref } from "firebase/database";
 const ResumeTemplate = () => {
     const [name, setName] = useState("TONI HENRIKSSON");
     const [title, setTitle] = useState("Computer Science Major");
-    const [education, setEducation] = useState("");
     const [jobs, setJobs] = useState("Web developer");
     const profileImage = require('../images/claymonster.png');
 
     const [data, setData] = useState([]);
+
+    // TODO: Lisää kaikille CV kentille omat tietonsa data statesta, muokkaa db templatea kauniimmaksi
+    
     useEffect(() => {
+        // Gets data from user-specific db and stores it to setData state. (render them to screen after)
         let userId = auth.currentUser.uid;
         onValue(ref(getDatabase(), 'users/' + userId), snapshot => {
             const dataz = snapshot.val();
             if(dataz !== null){
                 setData(dataz);
-                console.log(dataz);
+                testPrint();
             }
             else{
-                console.log("No data from DB")
+                console.log("No data froms DB")
             }
         })
       },[]);
 
-    /* const fetchData = async () => {
-        // Get usser uidss
-        let userId = auth.currentUser.uid;
-        // reads users database datas based ons uid !!!NOT RETURNING SHITsssss
-        const dbData = readFromDB(userId);
-
-        console.log(dbData);
-    } */
-
+    const testPrint = () => {
+        console.log(data.education);
+    }
     return (
         <div className="resume-template-container">
             <div className="resume-left-part">
@@ -53,7 +50,7 @@ const ResumeTemplate = () => {
                 <h1 className="resume-right-part-name">{name}</h1>
                 <p className="resume-right-part-title">{title}</p>
                 <h1 className="resume-h1">EDUCATION</h1>
-                <p className="resume-p">{data[0]}</p>
+                <p className="resume-p">{data.education}</p>
                 <h1 className="resume-h1">EMPLOYMENT</h1>
                 <p className="resume-p">{jobs}</p>
                 <h1 className="resume-h1">SKILLS & EXPERTISE</h1>
