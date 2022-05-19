@@ -2,6 +2,7 @@ import {React, useEffect, useState} from "react";
 import '../css/components/resumetemplate.css';
 import { readFromDB } from "../backend/firebase-utility";
 import { auth } from '../backend/firebase-config';
+import { getDatabase, onValue, ref } from "firebase/database";
 
 const ResumeTemplate = () => {
     const [name, setName] = useState("TONI HENRIKSSON");
@@ -11,21 +12,29 @@ const ResumeTemplate = () => {
     const profileImage = require('../images/claymonster.png');
 
     const [data, setData] = useState([]);
-    
     useEffect(() => {
-        fetchData();
-    },[])
-
-    const fetchData = async () => {
-        // Get user uid
         let userId = auth.currentUser.uid;
+        onValue(ref(getDatabase(), 'users/' + userId), snapshot => {
+            const dataz = snapshot.val();
+            if(dataz !== null){
+                setData(dataz);
+                console.log(dataz);
+            }
+            else{
+                console.log("No data from DB")
+            }
+        })
+      },[]);
 
-        // read users database data based on uid
-        let dbData = readFromDB(userId);
+    /* const fetchData = async () => {
+        // Get usser uidss
+        let userId = auth.currentUser.uid;
+        // reads users database datas based ons uid !!!NOT RETURNING SHITsssss
+        const dbData = readFromDB(userId);
+
         console.log(dbData);
+    } */
 
-        // Now just need to get info from dbData and set it to states, then render states to corresponding places on screen. 
-    }
     return (
         <div className="resume-template-container">
             <div className="resume-left-part">
@@ -44,7 +53,7 @@ const ResumeTemplate = () => {
                 <h1 className="resume-right-part-name">{name}</h1>
                 <p className="resume-right-part-title">{title}</p>
                 <h1 className="resume-h1">EDUCATION</h1>
-                <p className="resume-p">{education}</p>
+                <p className="resume-p">{data[0]}</p>
                 <h1 className="resume-h1">EMPLOYMENT</h1>
                 <p className="resume-p">{jobs}</p>
                 <h1 className="resume-h1">SKILLS & EXPERTISE</h1>
