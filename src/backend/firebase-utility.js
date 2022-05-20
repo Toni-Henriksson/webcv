@@ -7,8 +7,9 @@ export const register = async (email, password, fullName) => {
         const user = await createUserWithEmailAndPassword(auth, email, password);
 
         // Creates database template for newly created user
-        writeToDB(user.user.uid, email, "", "", "");
+        writeToDB(user.user.uid, email, fullName, "", "", "", "");
         console.log(user);
+        console.log("User registered: " + fullName);
     }catch(error){
         console.log(error.message);
     }
@@ -17,7 +18,7 @@ export const register = async (email, password, fullName) => {
 export const login = async (email, password) => {
     try{
         const user = await signInWithEmailAndPassword(auth, email, password);
-        //console.log("User logged in, UID is: " + user.user.uid);
+        //console.log("User logged in, UID is: " + user.user.uid);s
     }catch(error){
         console.log(error.message);
     }
@@ -27,7 +28,7 @@ export const logout = async () => {
     await signOut(auth);
 };
 
-export const writeToDB = async (userId, email, name, imageUrl, education) => {
+export const writeToDB = async (userId, email, name, imageUrl, education, employment, skills) => {
     const db = database;
     try{
         set(ref(db, 'users/' + userId), {
@@ -35,9 +36,10 @@ export const writeToDB = async (userId, email, name, imageUrl, education) => {
             username: name,
             profile_picture : imageUrl,
             education: education,
-
+            employment: employment,
+            skills: skills
           });
-          console.log("Data sent: " + userId + name + email); 
+          console.log("Data sent: " + userId + email + name + education + employment + skills); 
     }catch(error){
         console.log(error.message);
     }

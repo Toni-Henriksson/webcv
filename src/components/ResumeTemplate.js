@@ -9,7 +9,6 @@ const ResumeTemplate = () => {
     const [title, setTitle] = useState("Computer Science Major");
     const [jobs, setJobs] = useState("Web developer");
     const profileImage = require('../images/claymonster.png');
-
     const [data, setData] = useState([]);
 
     // TODO: Lisää kaikille CV kentille omat tietonsa data statesta, muokkaa db templatea kauniimmaksi
@@ -21,17 +20,13 @@ const ResumeTemplate = () => {
             const dataz = snapshot.val();
             if(dataz !== null){
                 setData(dataz);
-                testPrint();
             }
             else{
-                console.log("No data froms DB")
+                console.log("No data from DB")
             }
         })
     },[]);
 
-    const testPrint = () => {
-        console.log(data.education);
-    }
     return (
         <div className="resume-template-container">
             <div className="resume-left-part">
@@ -47,15 +42,14 @@ const ResumeTemplate = () => {
             <p className="resume-left-p">Matti Meikäläinen</p>
             </div>
             <div className="resume-right-part">
-                <h1 className="resume-right-part-name">{name}</h1>
-                <p className="resume-right-part-title">{title}</p>
+                <h1 className="resume-right-part-name">{data.username}</h1>
+                <p className="resume-right-part-title">{data.title}</p>
                 <h1 className="resume-h1">EDUCATION</h1>
                 <p className="resume-p">{data.education}</p>
                 <h1 className="resume-h1">EMPLOYMENT</h1>
-                <p className="resume-p">{jobs}</p>
+                <p className="resume-p">{data.employment}</p>
                 <h1 className="resume-h1">SKILLS & EXPERTISE</h1>
-                <p className="resume-p">C++</p>
-                <p className="resume-p">React.js</p>
+                <p className="resume-p">{data.skills}</p>
             </div>
         </div>    
     );
