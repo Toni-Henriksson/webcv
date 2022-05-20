@@ -27,7 +27,7 @@ const ResumeTemplate = () => {
                 console.log("No data froms DB")
             }
         })
-      },[]);
+    },[]);
 
     const testPrint = () => {
         console.log(data.education);

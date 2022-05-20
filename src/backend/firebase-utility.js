@@ -2,7 +2,7 @@ import { auth, database } from './firebase-config';
 import { getDatabase, ref, set, child, get } from "firebase/database";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
 
-export const register = async (email, password) => {
+export const register = async (email, password, fullName) => {
     try{
         const user = await createUserWithEmailAndPassword(auth, email, password);
 
@@ -27,12 +27,12 @@ export const logout = async () => {
     await signOut(auth);
 };
 
-export const writeToDB = async (userId, name, email, imageUrl, education) => {
+export const writeToDB = async (userId, email, name, imageUrl, education) => {
     const db = database;
     try{
         set(ref(db, 'users/' + userId), {
-            username: name,
             email: email,
+            username: name,
             profile_picture : imageUrl,
             education: education,
 
