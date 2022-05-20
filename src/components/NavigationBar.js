@@ -22,8 +22,8 @@ const NavigationBar = () => {
     function handleRegister(){
         navigation('/register');
     }
-    function testDB(){
-        writeToDB("Uest2UID", "XstiToni", "Xni@toni.fi", "X/image/testi");
+    function handleProfile(){
+        navigation('/profile');
     }
     return (
         <>
@@ -32,7 +32,7 @@ const NavigationBar = () => {
             <button className="btn-nav" onClick={handleLogin}>Login</button>
             <button className="btn-nav" onClick={handleLogout}>Logout</button>
             <button className="btn-nav" onClick={handleRegister}>Register</button>
-            <button className="btn-nav" onClick={testDB}>TestDB</button>
+            <button className="btn-nav" onClick={handleProfile}>Profile</button>
         </div>
         </>
 
