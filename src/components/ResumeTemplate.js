@@ -2,23 +2,34 @@ import {React, useEffect, useState} from "react";
 import '../css/components/resumetemplate.css';
 import { auth } from '../backend/firebase-config';
 import { getDatabase, onValue, ref } from "firebase/database";
+import { getAuth, onAuthStateChanged} from "firebase/auth";
 
 const ResumeTemplate = () => {
     const profileImage = require('../images/claymonster.png');
     const [data, setData] = useState([]);
-    
+    const author = getAuth();
+
     useEffect(() => {
         // Gets data from user-specific db and stores it to setData state. (render them to screen after)
-        let userId = auth.currentUser.uid;
-        onValue(ref(getDatabase(), 'users/' + userId), snapshot => {
-            const dataz = snapshot.val();
-            if(dataz !== null){
-                setData(dataz);
+        onAuthStateChanged(author, (user) => {
+            if (user) {
+              // User is signed in
+              const uid = user.uid;
+              onValue(ref(getDatabase(), 'users/' + uid), snapshot => {
+                const dataz = snapshot.val();
+                if(dataz !== null){
+                    setData(dataz);
+                }
+                else{
+                    console.log("No data from DB")
+                }
+            })
+              // ...
+            } else {
+              // User is signed out
+                console.log("User not signed in.");
             }
-            else{
-                console.log("No data from DB")
-            }
-        })
+        });
     },[]);
 
     return (
