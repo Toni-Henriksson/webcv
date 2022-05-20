@@ -18,7 +18,6 @@ export const register = async (email, password, fullName) => {
 export const login = async (email, password) => {
     try{
         const user = await signInWithEmailAndPassword(auth, email, password);
-        //console.log("User logged in, UID is: " + user.user.uid);s
     }catch(error){
         console.log(error.message);
     }
@@ -46,19 +45,13 @@ export const writeToDB = async (userId, email, name, imageUrl, education, employ
 
 };
 
-
 // Returns a promise
 export const readFromDB = async (userId) => {
     const dbRef = ref(getDatabase());
-    //const dbData = get(child(dbRef, `users/${userId}`));
-    //console.log("From read func: " + dbData);
     get(child(dbRef, `users/${userId}`)).then((snapshot) => {
     if (snapshot.exists()) {
-        //console.log(snapshot.val());
         let dbReturnedData = snapshot.val();
         let dbReturnedDataArray = Object.values(dbReturnedData);
-        
-        //console.log(dbReturnedDataArray[0]);
         return dbReturnedDataArray;
     } else {
         console.log("No data available");
