@@ -14,6 +14,7 @@ const UrlProfile = () => {
     // Data received from database bassed on url username
     const [uidData, setUidData] = useState([]);
 
+    // TODO: Now just make BasicTemplate that takes info from user as props & render from screen :)
     useEffect(() => {
          onValue(ref(getDatabase(),'userrouting/'+ params.username), snapshot=>{
              const data = snapshot.val();

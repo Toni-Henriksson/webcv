@@ -1,10 +1,14 @@
 .nav-wrapper{
-    background-color: #252424;
+    margin-bottom: 5%;
+    background-color: #252525;
     flex-direction: row;
-    margin-top: 0%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 5px;
 }
 .nav-header{
     font-size: 45px;
+    margin-top: 0;
 }
 .btn-nav{
     width: 200px;
