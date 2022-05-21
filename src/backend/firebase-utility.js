@@ -48,9 +48,7 @@ export const writeToDB = async (userId, email, name, imageUrl, education, employ
         console.log(error.message);
     }
 };
-export const getUserUid = async (username) => {
 
-}
 // Returns a promise
 export const readFromDB = async (userId) => {
     const dbRef = ref(getDatabase());
@@ -66,6 +64,11 @@ export const readFromDB = async (userId) => {
         console.error(error);
     }); 
 };
+
+// Searches for UID from username
+export const findUidFromUsername = async (username) => {
+    
+}
 
 
 
