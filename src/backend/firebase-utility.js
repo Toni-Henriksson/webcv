@@ -1,6 +1,6 @@
 import { auth, database } from './firebase-config';
 import { getDatabase, ref, set, child, get } from "firebase/database";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, getAuth} from "firebase/auth";
 
 export const register = async (email, password, fullName) => {
     try{
@@ -27,6 +27,7 @@ export const logout = async () => {
     await signOut(auth);
 };
 
+
 export const writeToDB = async (userId, email, name, imageUrl, education, employment, skills) => {
     const db = database;
     try{
@@ -38,13 +39,18 @@ export const writeToDB = async (userId, email, name, imageUrl, education, employ
             employment: employment,
             skills: skills
           });
-          console.log("Data sent: " + userId + email + name + education + employment + skills); 
+        set(ref(db, 'userrouting/' + name), {
+            uid: userId,
+            email: email,
+            username: name
+          });
     }catch(error){
         console.log(error.message);
     }
-
 };
+export const getUserUid = async (username) => {
 
+}
 // Returns a promise
 export const readFromDB = async (userId) => {
     const dbRef = ref(getDatabase());
@@ -60,5 +66,6 @@ export const readFromDB = async (userId) => {
         console.error(error);
     }); 
 };
+
 
 
