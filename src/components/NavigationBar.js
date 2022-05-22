@@ -5,6 +5,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { logout, writeToDB } from "../backend/firebase-utility";
 import { useNavigate } from "react-router-dom";
 
+const logo = require('../images/webCV-logo.png');
+
 const NavigationBar = () => {
     const [user, setUser] = useState({});
 
@@ -27,13 +29,12 @@ const NavigationBar = () => {
     }
     return (
         <>
+        <nav className="nav">
         <div className="nav-wrapper">
-            <a href="/"><h1 className="nav-header">webcv{user?.email}</h1></a>
-            <button className="btn-nav" onClick={handleLogin}>Login</button>
-            <button className="btn-nav" onClick={handleLogout}>Logout</button>
-            <button className="btn-nav" onClick={handleRegister}>Register</button>
-            <button className="btn-nav" onClick={handleProfile}>Profile</button>
+            <a href="/"><img src={logo} alt="Logo" width="100px" height="100px"></img></a>
+            <button className="btn-nav" onClick={handleLogin}>Sign in</button>
         </div>
+        </nav>
         </>
 
     );

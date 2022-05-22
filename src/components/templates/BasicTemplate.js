@@ -1,31 +1,30 @@
 import {React, useEffect, useState} from "react";
 import '../../css/components/templates/basictemplate.css';
 
-const BasicTemplate = () => {
-
+const BasicTemplate = (props) => {
+    const profileImage = require('../../images/claymonster.png');
     return (
-        <div className="resume-template-container">
-            <div className="resume-left-part">
-                <div className="profile-pic-container">
+        <div className="template-container">
+            <div className="template-left-part">
+                <div className="template-pic-container">
                     <img src={profileImage} className="profile-pic"></img>
-                    <p>moi</p>
                 </div>
-            <h1 className="resume-left-h1">PROFILE</h1>
-            <p className="resume-left-p">liibalaaba</p>
-            <h1 className="resume-left-h1">CONTACTS</h1>
-            <p className="resume-left-p">github.com/toni-henriksson</p>
-            <h1 className="resume-left-h1">REFERENCES</h1>
-            <p className="resume-left-p">Matti Meikäläinen</p>
+            <h1 className="template-left-h1">PROFILE</h1>
+            <p className="template-left-p">liibalaaba</p>
+            <h1 className="template-left-h1">CONTACTS</h1>
+            <p className="template-left-p">github.com/toni-henriksson</p>
+            <h1 className="template-left-h1">REFERENCES</h1>
+            <p className="template-left-p">Matti Meikäläinen</p>
             </div>
-            <div className="resume-right-part">
-                <h1 className="resume-right-part-name">{data.username}</h1>
-                <p className="resume-right-part-title">{data.title}</p>
-                <h1 className="resume-h1">EDUCATION</h1>
-                <p className="resume-p">{data.education}</p>
-                <h1 className="resume-h1">EMPLOYMENT</h1>
-                <p className="resume-p">{data.employment}</p>
-                <h1 className="resume-h1">SKILLS & EXPERTISE</h1>
-                <p className="resume-p">{data.skills}</p>
+            <div className="template-right-part">
+                <h1 className="template-right-part-name">{props.username}</h1>
+                <p className="template-right-part-title">{props.title}</p>
+                <h1 className="template-h1">EDUCATION</h1>
+                <p className="template-p">{props.education}</p>
+                <h1 className="template-h1">EMPLOYMENT</h1>
+                <p className="template-p">{props.employment}</p>
+                <h1 className="template-h1">SKILLS & EXPERTISE</h1>
+                <p className="template-p">{props.skills}</p>
             </div>
         </div>    
     );

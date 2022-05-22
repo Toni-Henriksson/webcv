@@ -1,18 +1,30 @@
+.nav{
+    position: sticky;
+    top: 0;
+    margin-bottom: 30px;
+}
 .nav-wrapper{
-    margin-bottom: 5%;
+    padding: 10px;
     background-color: #252525;
     flex-direction: row;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     box-shadow: 5px;
 }
-.nav-header{
-    font-size: 45px;
-    margin-top: 0;
-}
 .btn-nav{
+    position: absolute;
+    right: 0%;
+    background-color: #252525;
     width: 200px;
     height: 50px;
-    margin: 5px;
+    margin: 25px; 
+    color: #56c9ff;
+    border-color: #56c9ff;
+    font-size: 25px;
+}
+.btn-nav:hover{
+    background-color: #56c9ff;
+    color: #252525;
+    border-color: #252525;
 }
 

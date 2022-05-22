@@ -3,6 +3,7 @@ import '../css/screens/url-profile.css';
 import NavigationBar from '../components/NavigationBar';
 import { useParams } from 'react-router-dom';
 import { getDatabase, onValue, ref } from "firebase/database";
+import BasicTemplate from "../components/templates/BasicTemplate";
 
 const UrlProfile = () => {
     // GET Username from given URL 
@@ -45,6 +46,7 @@ const UrlProfile = () => {
     return (
         <>
         <NavigationBar></NavigationBar>
+        <BasicTemplate></BasicTemplate>
         <div className="url-profile-wrapper">
             <h1>This is URL user specific site</h1>
             <h1>Username: {params.username}</h1>
