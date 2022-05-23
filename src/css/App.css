@@ -26,5 +26,8 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(27, 27, 27);
 }
+h1{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 
