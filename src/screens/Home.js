@@ -6,7 +6,7 @@ const Home = () => {
     return (
       <>
       <NavigationBar></NavigationBar>
-      <div className="wrapper-content">
+      <div className="home-wrapper-content">
         <h1>Home</h1>
       </div>
       </>
