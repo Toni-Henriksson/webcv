@@ -19,8 +19,8 @@ const NavigationBar = () => {
         navigation('/login');
     }
     function handleLogout(){
-        navigation('/');
         logout();
+        navigation('/');
     }
     function handleRegister(){
         navigation('/register');
