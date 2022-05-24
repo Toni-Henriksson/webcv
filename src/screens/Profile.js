@@ -10,7 +10,8 @@ const Profile = () => {
 
     // Current selected template
     const [template,setTemplate] = useState(0);
-    // All avaible templates
+    
+    // All avaible templates basic, modern, retro, simple
     const templateArray = [
       <ResumeTemplate></ResumeTemplate>
     ];

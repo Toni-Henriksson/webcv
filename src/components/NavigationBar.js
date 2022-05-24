@@ -19,6 +19,7 @@ const NavigationBar = () => {
         navigation('/login');
     }
     function handleLogout(){
+        navigation('/');
         logout();
     }
     function handleRegister(){
@@ -32,7 +33,9 @@ const NavigationBar = () => {
         <nav className="nav">
         <div className="nav-wrapper">
             <a href="/"><img src={logo} alt="Logo" width="100px" height="100px"></img></a>
-            <button className="btn-nav" onClick={handleLogin}>Sign in</button>
+            {
+                user ? <button className="btn-nav" onClick={handleLogout}>Sign out</button> : <button className="btn-nav" onClick={handleLogin}>Sign in</button>
+            }
         </div>
         </nav>
         </>
