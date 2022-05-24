@@ -13,7 +13,6 @@ const TemplateCarousel = () => {
     useEffect(() => {
       setTemplates()
     }, [])
-    
     return (
         <>
         <div className="carousel-container"> 
@@ -25,15 +24,19 @@ const TemplateCarousel = () => {
             <div className="carousel-content">
                 <div className="template-card">
                     <img src={templatepng} alt="Logo" width="100%"></img>
+                    <p className="card-text">Basic template</p>
                 </div>
                 <div className="template-card">
                     <img src={templatepng} alt="Logo" width="100%"></img>
+                    <p className="card-text">Modern</p>
                 </div>
                 <div className="template-card">
                     <img src={templatepng} alt="Logo" width="100%"></img>
+                    <p className="card-text">Simple</p>
                 </div>
                 <div className="template-card">
-                    <img src={templatepng} alt="Logo" width="100%"></img>   
+                    <img src={templatepng} alt="Logo" width="100%"></img>  
+                    <p className="card-text">Retro</p> 
                 </div>
             </div>
             <div className="carousel-nav">
