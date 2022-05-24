@@ -9,7 +9,7 @@ const Profile = () => {
     // TODO: search firebase DB for user matching params name and render that to profile component
 
     // Current selected template
-    const [template,setTemplate] = useState(1);
+    const [template,setTemplate] = useState(0);
     // All avaible templates
     const templateArray = [
       <ResumeTemplate></ResumeTemplate>
@@ -20,7 +20,9 @@ const Profile = () => {
         <TemplateCarousel></TemplateCarousel>
         {/*Get stored template id and render that template from DB*/}
         <div className="profile-wrapper">
-          <ResumeTemplate></ResumeTemplate>
+          {
+             templateArray[template]
+          }
         </div>
       </>
     );
