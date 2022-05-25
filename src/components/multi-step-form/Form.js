@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { register } from "../../backend/firebase-utility";
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
 import './Form.css';
 
 const Form = () => {
+
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     email: "",
@@ -55,6 +57,11 @@ const Form = () => {
               if (page === FormTitles.length - 1) {
                 alert("FORM SUBMITTED");
                 console.log(formData);
+                register(formData.email, 
+                        formData.password, 
+                        formData.firstName + " " + formData.lastName,
+                        formData.username)
+
               } else {
                 setPage((currPage) => currPage + 1);
               }

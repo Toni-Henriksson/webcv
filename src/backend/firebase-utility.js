@@ -2,14 +2,14 @@ import { auth, database } from './firebase-config';
 import { getDatabase, ref, set, child, get } from "firebase/database";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, getAuth} from "firebase/auth";
 
-export const register = async (email, password, fullName) => {
+export const register = async (email, password, fullname, username) => {
     try{
         const user = await createUserWithEmailAndPassword(auth, email, password);
 
         // Creates database template for newly created user
-        writeToDB(user.user.uid, email, fullName, "", "", "", "");
+        writeToDB(user.user.uid, email, fullname, username);
         console.log(user);
-        console.log("User registered: " + fullName);
+        console.log("User registered: " + fullname);
     }catch(error){
         console.log(error.message);
     }
@@ -28,21 +28,18 @@ export const logout = async () => {
 };
 
 
-export const writeToDB = async (userId, email, name, imageUrl, education, employment, skills) => {
+export const writeToDB = async (userId, email, fullname, username) => {
     const db = database;
     try{
         set(ref(db, 'users/' + userId), {
             email: email,
-            username: name,
-            profile_picture : imageUrl,
-            education: education,
-            employment: employment,
-            skills: skills
+            fullname: fullname,
+            username: username,
           });
-        set(ref(db, 'userrouting/' + name), {
+        set(ref(db, 'userrouting/' + username), {
             uid: userId,
             email: email,
-            username: name
+            fullname: fullname
           });
     }catch(error){
         console.log(error.message);
