@@ -7,7 +7,7 @@ const BasicTemplate = (props) => {
         <div className="template-container">
             <div className="template-left-part">
                 <div className="template-pic-container">
-                    <img src={profileImage} className="profile-pic"></img>
+                    <img src={profileImage} alt="profileImg" className="profile-pic"></img>
                 </div>
             <h1 className="template-left-h1">PROFILE</h1>
             <p className="template-left-p">liibalaaba</p>
@@ -17,14 +17,14 @@ const BasicTemplate = (props) => {
             <p className="template-left-p">Matti Meikäläinen</p>
             </div>
             <div className="template-right-part">
-                <h1 className="template-right-part-name">{props.username}</h1>
-                <p className="template-right-part-title">{props.title}</p>
+                <h1 className="template-right-part-name">{props?.username}</h1>
+                <p className="template-right-part-title">{props?.title}</p>
                 <h1 className="template-h1">EDUCATION</h1>
-                <p className="template-p">{props.education}</p>
+                <p className="template-p">{props?.education}</p>
                 <h1 className="template-h1">EMPLOYMENT</h1>
-                <p className="template-p">{props.employment}</p>
+                <p className="template-p">{props?.employment}</p>
                 <h1 className="template-h1">SKILLS & EXPERTISE</h1>
-                <p className="template-p">{props.skills}</p>
+                <p className="template-p">{props?.skills}</p>
             </div>
         </div>    
     );

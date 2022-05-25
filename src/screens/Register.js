@@ -1,15 +1,15 @@
 import {React} from "react";
 import '../css/screens/register-screen.css';
 import NavigationBar from '../components/NavigationBar';
-import MainRegisterModule from '../components/MainRegisterModule';
-
+import Form from "../components/multi-step-form/Form.js";
 // j
 const Register = () => {
+    // <MainRegisterModule></MainRegisterModule>
     return (
         <>
         <NavigationBar></NavigationBar>
         <div className="wrapper-content-register">
-            <MainRegisterModule></MainRegisterModule>
+            <Form></Form>
         </div>
       </>
     );

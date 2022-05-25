@@ -58,7 +58,7 @@ export const readFromDB = async (userId) => {
         let dbReturnedDataArray = Object.values(dbReturnedData);
         return dbReturnedDataArray;
     } else {
-        console.log("No data available");
+        console.log("No data availabsle");
     }
     }).catch((error) => {
         console.error(error);
