@@ -4,9 +4,10 @@ import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
 import './Form.css';
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-
+    let navigation = useNavigate();
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     email: "",
@@ -61,7 +62,7 @@ const Form = () => {
                         formData.password, 
                         formData.firstName + " " + formData.lastName,
                         formData.username)
-
+                navigation('/profile');
               } else {
                 setPage((currPage) => currPage + 1);
               }
