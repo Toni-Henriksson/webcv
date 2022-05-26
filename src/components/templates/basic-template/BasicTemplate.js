@@ -30,7 +30,7 @@ const BasicTemplate = ({ templateData }) => {
 
             <div className="basic-template-experience-section">
                 <div className="basic-template-experience-left">
-                    <h1>Experience</h1>
+                    <h1>Work Experience</h1>
                 </div>
                 <div className="basic-template-experience-right">
                     <p>{templateData.experience}</p>

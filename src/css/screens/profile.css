@@ -5,18 +5,4 @@
     margin-top: 20px;
     background-color: #222222;
 }
-.profile-controls-wrapper{
-    display: flex;
-    width: 400px;
-}
-.profile-controls-panel{
-    margin: auto;
-    margin-top: 20px;
-    width: 300px;
-    height: 600px;
-    background-color: aqua;
-}
-.edit-button{
-    width: 150px;
-    height: 50px;
-}
+

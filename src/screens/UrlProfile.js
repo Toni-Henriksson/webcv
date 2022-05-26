@@ -46,14 +46,15 @@ const UrlProfile = () => {
     return (
         <>
         <NavigationBar></NavigationBar>
-        <BasicTemplate></BasicTemplate>
         <div className="url-profile-wrapper">
-            <h1>This is URL user specific site</h1>
-            <h1>Username: {params?.username}</h1>
-            <h1>User UID: {user}</h1>;
-            <h1>User Email based on uid: {uidData?.email}</h1>;
-            <h1>Skills based on uid: {uidData?.skills}</h1>;
+            <BasicTemplate templateData={uidData}></BasicTemplate>
+        
         </div>
+        <h1>This is URL user specific site</h1>
+        <h1>Username: {params?.username}</h1>
+        <h1>User UID: {user}</h1>;
+        <h1>User Email based on uid: {uidData?.email}</h1>;
+        <h1>Skills based on uid: {uidData?.skills}</h1>;
       </>
     );
 }

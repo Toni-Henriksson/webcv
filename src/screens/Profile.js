@@ -63,11 +63,6 @@ const Profile = () => {
           {
               templateArray[template]
           }
-          <div className="profile-controls-wrapper">
-            <div className="profile-controls-panel">
-              <button className="edit-button">Edit resume</button>
-            </div>
-          </div>
         </div>
       </>
     );
