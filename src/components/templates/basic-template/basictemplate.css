@@ -30,6 +30,7 @@
     margin-left: 20px;
     display: flex;
     flex-direction: row;
+    height: 20%;
     border-color: rgb(212, 212, 212);
     border-bottom-width: 3px;
     border-top-width: 0px;
@@ -42,7 +43,7 @@
 
 }
 .basic-template-experience-right{
-
+    width: 70%;
 }
 h1{
     font-size: 20px;
