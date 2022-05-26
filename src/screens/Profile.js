@@ -4,7 +4,7 @@ import { getAuth, onAuthStateChanged} from "firebase/auth";
 import '../css/screens/profile.css';
 import NavigationBar from '../components/NavigationBar';
 import ResumeTemplate from '../components/ResumeTemplate';
-import BasicTemplate from '../components/templates/BasicTemplate'
+import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
 import TemplateCarousel from "../components/TemplateCarousel";
 
 const Profile = () => {

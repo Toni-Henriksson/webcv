@@ -3,7 +3,7 @@ import '../css/screens/url-profile.css';
 import NavigationBar from '../components/NavigationBar';
 import { useParams } from 'react-router-dom';
 import { getDatabase, onValue, ref } from "firebase/database";
-import BasicTemplate from "../components/templates/BasicTemplate";
+import BasicTemplate from "../components/templates/basic-template/BasicTemplate";
 
 const UrlProfile = () => {
     // GET Username from given URL 
