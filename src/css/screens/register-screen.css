@@ -1,4 +1,6 @@
 .wrapper-content-register{
+    width: 50%;
+    height: 800px;
     display: block;
     margin: auto;
 }

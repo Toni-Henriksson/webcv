@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Form = () => {
     let navigation = useNavigate();
   const [page, setPage] = useState(0);
+
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,8 +18,11 @@ const Form = () => {
     firstName: "",
     lastName: "",
     username: "",
-    nationality: "",
-    other: "",
+    experience: "",
+    education: "",
+    skills: "",
+    links: "",
+    phoneNumber: "",
   });
 
   const FormTitles = ["Sign Up", "Personal Info", "Other"];
@@ -61,7 +66,12 @@ const Form = () => {
                 register(formData.email, 
                         formData.password, 
                         formData.firstName + " " + formData.lastName,
-                        formData.username)
+                        formData.username,
+                        formData.experience,
+                        formData.education,
+                        formData.skills,
+                        formData.links,
+                        formData.phoneNumber)
                 navigation('/profile');
               } else {
                 setPage((currPage) => currPage + 1);
