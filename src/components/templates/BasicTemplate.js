@@ -20,7 +20,7 @@ const BasicTemplate = ({ templateData }) => {
             <p className="template-left-p">Matti Meikäläinen</p>
             </div>
             <div className="template-right-part">
-                <h1 className="template-right-part-name">{templateData.fullName}</h1>
+                <h1 className="template-right-part-name">{templateData.fullname}</h1>
                 <h1 className="template-h1">EDUCATION</h1>
                 <p className="template-p">{templateData.education}</p>
                 <h1 className="template-h1">EMPLOYMENT</h1>

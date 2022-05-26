@@ -30,23 +30,22 @@
     overflow: hidden;
 }
 .template-left-h1{
-
+    font-size: 20px;
 }
 .template-left-p{
-
+    font-size: 15px;
+    font-weight: 400;
 }
 .template-right-part{
 
 }
 .template-right-part-name{
-
+    font-size: 35px;
 }
-.template-right-part-title{
 
-}
 .template-h1{
-
+    font-size: 30px;
 }
 .template-p{
-
+    font-size: 20px;
 }

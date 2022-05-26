@@ -23,12 +23,14 @@
     height: 50px;
     font-size: 25px;
     background-color: #222222;
-    color: white;
-    border-color: white;
+    color: rgb(50, 253, 253);
+    border-color: rgb(50, 253, 253);
+    border-width: 3px;
     border-radius: 25px;
 }
 .front-page-btn:hover{
     background-color: #50d7e0;
+    color:#222222;
 }
 h1{
     font-size: 55px;
