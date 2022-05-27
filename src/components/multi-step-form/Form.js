@@ -29,8 +29,7 @@ const Form = () => {
   // TODO: 1. Data from Form -> this two arrays.
   // TODO: 2. Dislay data from DB to profile / URLProfile
   const [exData, setExData] = useState([
-    ["Inexxxx partners", "10/2012 - 10/2022", "Operaattori"],
-    ["Faceboook", "10/2022 - 12/2022", "Ohjelmoija"]
+
   ]);
   const [edData, setEdData] = useState([
     ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelor of Software Engineering"],
@@ -85,7 +84,7 @@ const Form = () => {
                         formData.education,
                         formData.skills,
                         formData.links,
-                        formData.phoneNumber).then(() => { saveUserWorkExperience(exData); saveUserEducation(edData) })
+                        formData.phoneNumber).then(() => { saveUserWorkExperience(exData); saveUserEducation(edData); console.log(exData) });
                 navigation('/profile');
                 
               } else {
