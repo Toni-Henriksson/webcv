@@ -51,6 +51,18 @@ export const writeToDB = async (userId, email, fullname, username, experience, e
     }
 };
 
+export const saveUserWorkExperience = async (exData) => {
+    let userId = auth.currentUser.uid;
+    const db = database;
+    try{
+        set(ref(db, 'users/' + userId + "/experience"), {
+            exData
+          });
+    }catch(error){
+        console.log("Error saving user Work Experience! " + error.message);
+    }
+};
+
 
 export const readFromDB = async (userId) => {
     const dbRef = ref(getDatabase());

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "../../backend/firebase-utility";
+import { register, saveUserWorkExperience } from "../../backend/firebase-utility";
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
@@ -24,6 +24,14 @@ const Form = () => {
     links: "",
     phoneNumber: "",
   });
+  const [exData, setExData] = useState([
+    ["Inexxxx partners", "10/2012 - 10/2022", "Operaattori"],
+    ["Faceboook", "10/2022 - 12/2022", "Ohjelmoija"]
+  ]);
+  const [edData, setEdData] = useState([
+    ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelor of Software Engineering"],
+    ["Edupoli", "10/2022 - 12/2022", "Electrician"]
+  ]);
 
   const FormTitles = ["Sign Up", "Personal Info", "Other"];
 
@@ -62,7 +70,7 @@ const Form = () => {
             onClick={() => {
               if (page === FormTitles.length - 1) {
                 alert("FORM SUBMITTED");
-                console.log(formData);
+                console.log(exData);
                 register(formData.email, 
                         formData.password, 
                         formData.firstName + " " + formData.lastName,
@@ -71,8 +79,10 @@ const Form = () => {
                         formData.education,
                         formData.skills,
                         formData.links,
-                        formData.phoneNumber)
+                        formData.phoneNumber).then(() => { saveUserWorkExperience(exData) })
+                //saveUserWorkExperience(exData);
                 navigation('/profile');
+                
               } else {
                 setPage((currPage) => currPage + 1);
               }
