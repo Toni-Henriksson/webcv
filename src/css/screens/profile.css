@@ -5,4 +5,12 @@
     margin-top: 20px;
     background-color: #222222;
 }
+.profile-ctrl{
+    width: 600px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-radius: 25px;
+    border-color: aqua;
+    margin-left: 50px;
+}
 

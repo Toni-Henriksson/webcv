@@ -3,7 +3,6 @@ import { register, saveUserEducation, saveUserWorkExperience } from "../../backe
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
-import WorkInfo from "./WorkInfo";
 import './Form.css';
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +10,7 @@ const Form = () => {
     let navigation = useNavigate();
   const [page, setPage] = useState(0);
 
-  
+  // Template for DB
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -36,17 +35,15 @@ const Form = () => {
     ["Edupoli", "10/2022 - 12/2022", "Electrician"]
   ]);
 
-  const FormTitles = ["Sign Up", "Personal Info", "Other", "Work experience"];
+  const FormTitles = ["Sign Up", "Personal Info", "Other"];
 
   const PageDisplay = () => {
     if (page === 0) {
       return <SignUpInfo formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
       return <PersonalInfo formData={formData} setFormData={setFormData} />;
-    } else if (page === 2){
+    } else{
       return <OtherInfo formData={formData} setFormData={setFormData} />;
-    }else{
-      return <WorkInfo exData={exData} setExData={setExData} />;
     }
   };
 
@@ -79,12 +76,12 @@ const Form = () => {
                 register(formData.email, 
                         formData.password, 
                         formData.firstName + " " + formData.lastName,
+                        formData.phoneNumber,
                         formData.username,
                         formData.experience,
                         formData.education,
                         formData.skills,
-                        formData.links,
-                        formData.phoneNumber).then(() => { saveUserWorkExperience(exData); saveUserEducation(edData); console.log(exData) });
+                        formData.links)
                 navigation('/profile');
                 
               } else {

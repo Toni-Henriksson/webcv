@@ -6,6 +6,7 @@ import NavigationBar from '../components/NavigationBar';
 import ResumeTemplate from '../components/ResumeTemplate';
 import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
 import TemplateCarousel from "../components/TemplateCarousel";
+import WorkExperience from "../components/user-data-fragment/WorkExperience";
 
 const Profile = () => {
 
@@ -25,8 +26,7 @@ const Profile = () => {
       phoneNumber: "",
     });
     const [exData, setExData] = useState([
-      ["Inex partners", "10/2012 - 10/2022", "Operaattori"],
-      ["Facebook", "10/2022 - 12/2022", "Ohjelmoija"]
+
     ]);
     const [edData, setEdData] = useState([
       ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelor of Software Engineering"],
@@ -66,11 +66,19 @@ const Profile = () => {
         <>
         <NavigationBar></NavigationBar>
         <TemplateCarousel></TemplateCarousel>
-        {/*Get stored template id and render that template from DB*/}
+        {/*Get stored template id and render thast template from DB*/}
         <div className="profile-wrapper">
           {
               templateArray[template]
           }
+          <div className="profile-ctrl">
+            
+            <div>
+              {
+                <WorkExperience exData={exData} setExData={setExData}/>
+              }
+            </div>
+          </div>
         </div>
       </>
     );

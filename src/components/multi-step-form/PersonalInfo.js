@@ -21,6 +21,14 @@ const PersonalInfo = ({ formData, setFormData }) => {
       />
       <input
         type="text"
+        placeholder="Phone number"
+        value={formData.phoneNumber}
+        onChange={(e) => {
+          setFormData({ ...formData, phoneNumber: e.target.value });
+        }}
+      />
+      <input
+        type="text"
         placeholder="Username..."
         value={formData.username}
         onChange={(e) => {
