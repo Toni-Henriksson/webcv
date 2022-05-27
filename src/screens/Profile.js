@@ -24,11 +24,19 @@ const Profile = () => {
       links: "",
       phoneNumber: "",
     });
+    const [exData, setExData] = useState([
+      ["Inex partners", "10/2012 - 10/2022", "Operaattori"],
+      ["Facebook", "10/2022 - 12/2022", "Ohjelmoija"]
+    ]);
+    const [edData, setEdData] = useState([
+      ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelor of Software Engineering"],
+      ["Edupoli", "10/2022 - 12/2022", "Electrician"]
+    ]);
 
     // All avaible templates basic, modern, retro, simple
     const templateArray = [
       <ResumeTemplate></ResumeTemplate>,
-      <BasicTemplate templateData={templateData}></BasicTemplate>
+      <BasicTemplate templateData={templateData} exData={exData} edData={edData}></BasicTemplate>
     ];
     
     useEffect(() => {
