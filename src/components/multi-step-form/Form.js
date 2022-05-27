@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register, saveUserWorkExperience } from "../../backend/firebase-utility";
+import { register, saveUserEducation, saveUserWorkExperience } from "../../backend/firebase-utility";
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
@@ -79,8 +79,7 @@ const Form = () => {
                         formData.education,
                         formData.skills,
                         formData.links,
-                        formData.phoneNumber).then(() => { saveUserWorkExperience(exData) })
-                //saveUserWorkExperience(exData);
+                        formData.phoneNumber).then(() => { saveUserWorkExperience(exData); saveUserEducation(edData) })
                 navigation('/profile');
                 
               } else {

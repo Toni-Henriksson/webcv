@@ -62,7 +62,17 @@ export const saveUserWorkExperience = async (exData) => {
         console.log("Error saving user Work Experience! " + error.message);
     }
 };
-
+export const saveUserEducation = async (edData) => {
+    let userId = auth.currentUser.uid;
+    const db = database;
+    try{
+        set(ref(db, 'users/' + userId + "/education"), {
+            edData
+          });
+    }catch(error){
+        console.log("Error saving user Work Experience! " + error.message);
+    }
+};
 
 export const readFromDB = async (userId) => {
     const dbRef = ref(getDatabase());
