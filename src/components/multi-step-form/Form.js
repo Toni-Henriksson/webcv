@@ -3,6 +3,7 @@ import { register, saveUserEducation, saveUserWorkExperience } from "../../backe
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
+import WorkInfo from "./WorkInfo";
 import './Form.css';
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +25,9 @@ const Form = () => {
     links: "",
     phoneNumber: "",
   });
+
+  // TODO: 1. Data from Form -> this two arrays.
+  // TODO: 2. Dislay data from DB to profile / URLProfile
   const [exData, setExData] = useState([
     ["Inexxxx partners", "10/2012 - 10/2022", "Operaattori"],
     ["Faceboook", "10/2022 - 12/2022", "Ohjelmoija"]
@@ -33,15 +37,17 @@ const Form = () => {
     ["Edupoli", "10/2022 - 12/2022", "Electrician"]
   ]);
 
-  const FormTitles = ["Sign Up", "Personal Info", "Other"];
+  const FormTitles = ["Sign Up", "Personal Info", "Other", "Work experience"];
 
   const PageDisplay = () => {
     if (page === 0) {
       return <SignUpInfo formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
       return <PersonalInfo formData={formData} setFormData={setFormData} />;
-    } else {
+    } else if (page === 2){
       return <OtherInfo formData={formData} setFormData={setFormData} />;
+    }else{
+      return <WorkInfo exData={exData} setExData={setExData} />;
     }
   };
 
