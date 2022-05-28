@@ -1,4 +1,5 @@
-import {React, useState} from "react"
+import {React, useState} from "react";
+import { saveUserWorkExperience } from "../../backend/firebase-utility";
 
 const WorkExperience = () => {
     const [title, setTitle] = useState('');
@@ -7,11 +8,12 @@ const WorkExperience = () => {
 
     const handleSending = () => {
       const arr = [title,duration,description]
+      saveUserWorkExperience(arr)
       setTitle('')
       setDescription('')
       setDuration('')
-      console.log(arr)
-    }
+    };
+
   return (
       <>
     <div className="workexperience-container">
@@ -33,8 +35,8 @@ const WorkExperience = () => {
       value={description}
       onChange={(e)=>setDescription(e.target.value)}
       />
-      <button onClick={() => handleSending()}>Submit</button>
     </div>
+    <button onClick={() => handleSending()}>Submit</button>
     </>
   );
 }

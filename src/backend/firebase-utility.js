@@ -1,6 +1,6 @@
 import { auth, database } from './firebase-config';
-import { getDatabase, ref, set, child, get } from "firebase/database";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, getAuth} from "firebase/auth";
+import { getDatabase, ref, set, child, get, push } from "firebase/database";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
 
 export const register = async (email, password, fullname, username, experience, education, skills, links, phoneNumber) => {
     try{
@@ -51,29 +51,27 @@ export const writeToDB = async (userId, email, fullname, username, experience, e
     }
 };
 
-export const saveUserWorkExperience = async (exData) => {
+
+export const saveUserWorkExperience = async ([title, duration, description]) => {
     let userId = auth.currentUser.uid;
     const db = database;
     try{
-        set(ref(db, 'users/' + userId + "/experience"), {
-            exData
-            
-          })
-    console.log("Data saved to users experience!")
+        console.log("datan tallentaminen aloitettu")
+        await push(ref(db, 'users/' + userId + "/experience/"), {
+            title: title,
+            duration: duration,
+            description: description
+        })
+        console.log("data tallentui")
     }catch(error){
-        console.log("Error saving user Work Experience! " + error.message);
-    }
+        console.log("virhe dataa tallentaessa");
+    };
 };
+
 export const saveUserEducation = async (edData) => {
     let userId = auth.currentUser.uid;
     const db = database;
-    try{
-        set(ref(db, 'users/' + userId + "/education"), {
-            edData
-          });
-    }catch(error){
-        console.log("Error saving user Work Experience! " + error.message);
-    }
+
 };
 
 export const readFromDB = async (userId) => {
@@ -91,10 +89,6 @@ export const readFromDB = async (userId) => {
     }); 
 };
 
-// Searches for UID from username
-export const findUidFromUsername = async (username) => {
-    
-}
 
 
 
