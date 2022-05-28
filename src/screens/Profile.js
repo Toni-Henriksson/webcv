@@ -1,17 +1,17 @@
 import {React, useState, useEffect} from "react";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import '../css/screens/profile.css';
 import NavigationBar from '../components/NavigationBar';
-import ResumeTemplate from '../components/ResumeTemplate';
 import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
 import TemplateCarousel from "../components/TemplateCarousel";
 import WorkExperience from "../components/user-data-fragment/WorkExperience";
 
 const Profile = () => {
-
+    let navigation = useNavigate();
     // Current selected template
-    const [template,setTemplate] = useState(1);
+    const [template,setTemplate] = useState(0);
     const author = getAuth();
 
     // Info from DB -> This dataform -> As props to template component -> render to screen
@@ -26,7 +26,8 @@ const Profile = () => {
       phoneNumber: "",
     });
     const [exData, setExData] = useState([
-
+      ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelor of Software Engineering"],
+      ["Edupoli", "10/2022 - 12/2022", "Electrician"]
     ]);
     const [edData, setEdData] = useState([
       ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelor of Software Engineering"],
@@ -35,10 +36,8 @@ const Profile = () => {
 
     // All avaible templates basic, modern, retro, simple
     const templateArray = [
-      <ResumeTemplate></ResumeTemplate>,
-      <BasicTemplate templateData={templateData} exData={exData} edData={edData}></BasicTemplate>
+      <BasicTemplate templateData={templateData} exData={exData} edData={edData}></BasicTemplate>,
     ];
-    
     useEffect(() => {
         // Gets data from user-specific db and stores it to setData state. (render them to screen after)
         onAuthStateChanged(author, (user) => {
@@ -63,22 +62,15 @@ const Profile = () => {
     },[]);
 
     return (
-        <>
+      <>
         <NavigationBar></NavigationBar>
         <TemplateCarousel></TemplateCarousel>
         {/*Get stored template id and render thast template from DB*/}
         <div className="profile-wrapper">
           {
-              templateArray[template]
+          templateArray[template]
           }
-          <div className="profile-ctrl">
-            
-            <div>
-              {
-                <WorkExperience exData={exData} setExData={setExData}/>
-              }
-            </div>
-          </div>
+          <WorkExperience></WorkExperience>
         </div>
       </>
     );

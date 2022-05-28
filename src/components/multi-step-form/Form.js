@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register, saveUserEducation, saveUserWorkExperience } from "../../backend/firebase-utility";
+import { register } from "../../backend/firebase-utility";
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
@@ -24,16 +24,6 @@ const Form = () => {
     links: "",
     phoneNumber: "",
   });
-
-  // TODO: 1. Data from Form -> this two arrays.
-  // TODO: 2. Dislay data from DB to profile / URLProfile
-  const [exData, setExData] = useState([
-
-  ]);
-  const [edData, setEdData] = useState([
-    ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelor of Software Engineering"],
-    ["Edupoli", "10/2022 - 12/2022", "Electrician"]
-  ]);
 
   const FormTitles = ["Sign Up", "Personal Info", "Other"];
 
@@ -72,7 +62,6 @@ const Form = () => {
             onClick={() => {
               if (page === FormTitles.length - 1) {
                 alert("FORM SUBMITTED");
-                console.log(exData);
                 register(formData.email, 
                         formData.password, 
                         formData.firstName + " " + formData.lastName,

@@ -57,7 +57,9 @@ export const saveUserWorkExperience = async (exData) => {
     try{
         set(ref(db, 'users/' + userId + "/experience"), {
             exData
-          });
+            
+          })
+    console.log("Data saved to users experience!")
     }catch(error){
         console.log("Error saving user Work Experience! " + error.message);
     }
