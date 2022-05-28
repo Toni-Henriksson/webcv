@@ -38,7 +38,10 @@ const Profile = () => {
     const templateArray = [
       <BasicTemplate templateData={templateData} exData={exData} edData={edData}></BasicTemplate>,
     ];
-    useEffect(() => {
+
+    // TODO: TÄÄ AIHEUTTAA INFINITE LOOPIN JA SIVUSTO KAATUU KUN WORKEXPERIENCE TALLENTAA TIETOA!!!! 
+
+    /*useEffect(() => {
         // Gets data from user-specific db and stores it to setData state. (render them to screen after)
         onAuthStateChanged(author, (user) => {
             if (user) {
@@ -59,7 +62,7 @@ const Profile = () => {
                 console.log("User not signed in.");
             }
         });
-    },[]);
+    },[]); */
 
     return (
       <>

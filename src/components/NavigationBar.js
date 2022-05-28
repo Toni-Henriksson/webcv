@@ -2,7 +2,7 @@ import {React, useState} from "react";
 import '../css/components/NavigationBar.css';
 import { auth } from '../backend/firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
-import { logout, writeToDB } from "../backend/firebase-utility";
+import { logout } from "../backend/firebase-utility";
 import { useNavigate } from "react-router-dom";
 
 const logo = require('../images/webCV-logo.png');
