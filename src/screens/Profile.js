@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from "react";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { get, getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import '../css/screens/profile.css';
@@ -10,21 +10,16 @@ import WorkExperience from "../components/user-data-fragment/WorkExperience";
 
 const Profile = () => {
     let navigation = useNavigate();
+
     // Current selected template
     const [template,setTemplate] = useState(0);
     const author = getAuth();
 
-    // Info from DB -> This dataform -> As props to template component -> render to screen
-    const [templateData, setTemplateData] = useState({
-      email: "",
-      fullName: "",
-      username: "",
-      experience: "",
-      education: "",
-      skills: "",
-      links: "",
-      phoneNumber: "",
-    });
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [userAlias, setAlias] = useState('')
+
+
     const [exData, setExData] = useState([
       ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelor of Software Engineering"],
       ["Edupoli", "10/2022 - 12/2022", "Electrician"]
@@ -36,33 +31,60 @@ const Profile = () => {
 
     // All avaible templates basic, modern, retro, simple
     const templateArray = [
-      <BasicTemplate templateData={templateData} exData={exData} edData={edData}></BasicTemplate>,
+      <BasicTemplate exData={exData} edData={edData} phone={phone} email={email} userAlias={userAlias}></BasicTemplate>,
     ];
 
-    // TODO: TÄÄ AIHEUTTAA INFINITE LOOPIN JA SIVUSTO KAATUU KUN WORKEXPERIENCE TALLENTAA TIETOA!!!! 
 
-    /*useEffect(() => {
+    useEffect(() => {
         // Gets data from user-specific db and stores it to setData state. (render them to screen after)
         onAuthStateChanged(author, (user) => {
             if (user) {
-              // User is signed in
               const uid = user.uid;
-              onValue(ref(getDatabase(), 'users/' + uid), snapshot => {
+              onValue(ref(getDatabase(), 'users/' + uid +'/phoneNumber'), snapshot => {
                 const data = snapshot.val();
                 if(data !== null){
-                    setTemplateData(data)
+                  setPhone(data)
                 }
                 else{
                     console.log("No data from DB")
                 }
-            })
-              // ...
+              });
+
+              onValue(ref(getDatabase(), 'users/' + uid +'/email'), snapshot => {
+                const data = snapshot.val();
+                if(data !== null){
+                  setEmail(data)
+                }
+                else{
+                    console.log("No data from DB")
+                }
+              });
+
+              onValue(ref(getDatabase(), 'users/' + uid +'/username'), snapshot => {
+                const data = snapshot.val();
+                if(data !== null){
+                  setAlias(data)
+                }
+                else{
+                    console.log("No data from DB")
+                }
+              });
+              onValue(ref(getDatabase(), 'users/' + uid +'/experience'), snapshot => {
+                const data = snapshot.val();
+                console.log("new exp added!" + data)
+                if(data !== null){
+                  //setExData(data)
+                }
+                else{
+                    console.log("No data from DB")
+                }
+              });
             } else {
               // User is signed out
                 console.log("User not signed in.");
             }
         });
-    },[]); */
+    },[]); 
 
     return (
       <>

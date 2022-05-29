@@ -1,21 +1,19 @@
-import {React, useEffect, useState} from "react";
+import { React } from "react";
 import './basictemplate.css';
 
-const BasicTemplate = ({ templateData, exData, edData }) => {
-    //const profileImage = require('../../images/claymonster.png');
-    // email, fullname, username, experience, education, skills, links, phoneNumber
-    // <p className="template-left-p">{templateData.email}</p>
+const BasicTemplate = ({ exData, edData, phone, email, userAlias }) => {
+
     return (
         <>
         <div className="template-container">
             <div className="basic-template-header">
                 <div className="basic-template-header-left">
-                    <h1 style={{color: "black", fontSize: "35px"}}>{templateData.fullname}</h1>
+                    <h1 style={{color: "black", fontSize: "35px"}}>{userAlias}</h1>
                 </div>
                 <div className="basic-template-header-right">
-                    <p>email: {templateData.email}</p>
-                    <p>phone: {templateData.phoneNumber}</p>
-                    <p>github: {templateData.links}</p>
+                    <p>email: {email}</p>
+                    <p>phone: {phone}</p>
+                    <p>github: </p>
                 </div>
             </div>
 
@@ -71,7 +69,7 @@ const BasicTemplate = ({ templateData, exData, edData }) => {
                     <h1>Key Skills</h1>
                 </div>
                 <div className="basic-template-experience-right">
-                    <p>{templateData.skills}</p>
+                    <p>coming soon..</p>
                 </div>
             </div>
         </div>  
