@@ -74,19 +74,21 @@ export const saveUserEducation = async (edData) => {
 
 };
 
-export const readFromDB = async (userId) => {
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, `users/${userId}`)).then((snapshot) => {
-    if (snapshot.exists()) {
-        let dbReturnedData = snapshot.val();
-        let dbReturnedDataArray = Object.values(dbReturnedData);
-        return dbReturnedDataArray;
-    } else {
-        console.log("No data availabsle");
-    }
-    }).catch((error) => {
-        console.error(error);
-    }); 
+export const readFromDB = async () => {
+    let userId = auth.currentUser.uid;
+      const db = getDatabase();
+      const workDB = ref(db, 'users/' + userId + '/experience/');
+      get(workDB, (snapshot) => {
+        console.log("moimoi")
+        const exp = []
+        snapshot.forEach(item => {
+          const temp = item.val();
+          exp.push([temp.title, temp.duration, temp.description]);
+          return false;
+        })
+        console.log(exp)
+        return(exp);
+      });
 };
 
 

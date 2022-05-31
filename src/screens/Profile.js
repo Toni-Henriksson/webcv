@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { get, getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../backend/firebase-config";
+import { readFromDB } from "../backend/firebase-utility";
 import '../css/screens/profile.css';
 import NavigationBar from '../components/NavigationBar';
 import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
@@ -24,8 +25,9 @@ const Profile = () => {
     ["Edupoli", "10/2022 - 12/2022", "Electrician"]
   ]);
   useEffect(() => {
+    //console.log(readFromDB());
     async function fetchData() {
-      let userId = auth.currentUser.uid;
+      let userId = author.currentUser.uid;
       const db = getDatabase();
       const workDB = ref(db, 'users/' + userId + '/experience/');
       onValue(workDB, (snapshot) => {
@@ -35,7 +37,6 @@ const Profile = () => {
           exp.push([temp.title, temp.duration, temp.description]);
           return false;
         })
-        console.log(exp)
         setExData(exp);
       });
     }
