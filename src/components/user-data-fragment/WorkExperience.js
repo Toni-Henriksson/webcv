@@ -35,8 +35,8 @@ const WorkExperience = () => {
       value={description}
       onChange={(e)=>setDescription(e.target.value)}
       />
+      <button onClick={() => handleSending()}>Submit</button>
     </div>
-    <button onClick={() => handleSending()}>Submit</button>
     </>
   );
 }

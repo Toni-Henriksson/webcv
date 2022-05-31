@@ -56,13 +56,13 @@ export const saveUserWorkExperience = async ([title, duration, description]) => 
     let userId = auth.currentUser.uid;
     const db = database;
     try{
-        console.log("datan tallentaminen aloitettu")
+        //console.log("datan tallentaminen aloitettu")
         await push(ref(db, 'users/' + userId + "/experience/"), {
             title: title,
             duration: duration,
             description: description
         })
-        console.log("data tallentui")
+        //console.log("data tallentui")
     }catch(error){
         console.log("virhe dataa tallentaessa");
     };
