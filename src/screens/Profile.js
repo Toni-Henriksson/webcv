@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { get, getDatabase, onValue, ref} from "firebase/database";
+import { get, getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../backend/firebase-config";
 import '../css/screens/profile.css';
@@ -9,7 +9,6 @@ import TemplateCarousel from "../components/TemplateCarousel";
 import WorkExperience from "../components/user-data-fragment/WorkExperience";
 
 const Profile = () => {
-  const [userId, setUid] = useState(); 
   // Current selected template
   const [template, setTemplate] = useState(0);
   const author = getAuth();
@@ -25,28 +24,25 @@ const Profile = () => {
     ["Edupoli", "10/2022 - 12/2022", "Electrician"]
   ]);
   useEffect(() => {
-    setUid(auth.currentUser.uid);
-    return(fetchWork())
+    async function fetchData() {
+      let userId = auth.currentUser.uid;
+      const db = getDatabase();
+      const workDB = ref(db, 'users/' + userId + '/experience/');
+      onValue(workDB, (snapshot) => {
+        const exp = []
+        snapshot.forEach(item => {
+          const temp = item.val();
+          exp.push([temp.title, temp.duration, temp.description]);
+          return false;
+        })
+        console.log(exp)
+        setExData(exp);
+      });
+    }
+    fetchData();
   }, []);
 
-  function fetchWork() {
-    //let userId = auth.currentUsesr.uid;ss
-    const db = getDatabase();
-    const workDB = ref(db, 'users/' + userId + '/experience/');
-    onValue(workDB, (snapshot) => {
-      const exp = []
-      snapshot.forEach(item => {
-        const temp = item.val();
-        exp.push([temp.title, temp.duration, temp.description]);
-        console.log(exp)
-        return false;
-      })
-      console.log(exp)
-      setExData(exp);
-    });
-  }
-
-  // All avaible templates basic, modeddrn, retro, simple
+  // All avaible templates basic, modedddrn, retddro, simple
   const templateArray = [
     <BasicTemplate exData={exData} edData={edData} phone={phone} email={email} userAlias={userAlias}></BasicTemplate>,
   ];
