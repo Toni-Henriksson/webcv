@@ -6,6 +6,7 @@ import NavigationBar from '../components/NavigationBar';
 import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
 import TemplateCarousel from "../components/TemplateCarousel";
 import WorkExperience from "../components/user-data-fragment/WorkExperience";
+import AddEducationWidget from "../components/user-data-fragment/AddEducationWidget";
 
 const Profile = () => {
   // Current selected template
@@ -70,7 +71,10 @@ const Profile = () => {
         {
           templateArray[template]
         }
-        <WorkExperience></WorkExperience>
+        <div className="control-panel">
+          <WorkExperience></WorkExperience>
+          <AddEducationWidget></AddEducationWidget>
+        </div>
       </div>
     </>
   );
