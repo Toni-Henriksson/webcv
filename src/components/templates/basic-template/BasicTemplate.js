@@ -28,7 +28,7 @@ const BasicTemplate = ({ phone, email, userAlias }) => {
             const edu = []
             snapshot.forEach(item => {
                 const temp = item.val();
-                edu.push([temp.degree, temp.duration, temp.school]);
+                edu.push([temp.school, temp.duration, temp.degree]);
                 return false;
             })
             setEduInfo(edu);
