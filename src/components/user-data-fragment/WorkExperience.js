@@ -1,7 +1,6 @@
 import {React, useState} from "react";
 import { database } from '../../backend/firebase-config';
 import { push, ref, set } from "firebase/database";
-import { saveUserWorkExperience } from "../../backend/firebase-utility";
 
 const WorkExperience = () => {
     const [title, setTitle] = useState('');
