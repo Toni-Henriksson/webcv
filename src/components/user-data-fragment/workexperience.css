@@ -23,6 +23,12 @@
     border-color: #56c9ff;
     font-size: 20px;
 }
+.experience-submit-btn:hover{
+    background-color: #56c9ff;
+    color: rgb(41, 41, 41);
+    border-color: #56c9ff;
+
+}
 .label{
     color: azure;
 }
