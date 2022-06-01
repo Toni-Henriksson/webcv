@@ -4,6 +4,7 @@ import './basictemplate.css';
 
 const BasicTemplate = ({ phone, email, userAlias }) => {
     const [info, setInfo] = useState([]);
+    const [eduInfo, setEduInfo] = useState([]);
     window.addEventListener('load', () => {
         Fetchdata();
     });
@@ -12,6 +13,7 @@ const BasicTemplate = ({ phone, email, userAlias }) => {
     const Fetchdata = () => {
         const db = getDatabase();
         const workDB = ref(db, 'exp');
+        const eduDB = ref(db, 'edu');
         onValue(workDB, (snapshot) => {
             const exp = []
             snapshot.forEach(item => {
@@ -21,6 +23,16 @@ const BasicTemplate = ({ phone, email, userAlias }) => {
             })
             setInfo(exp);
             console.log("exp: " + exp);
+        });
+        onValue(eduDB, (snapshot) => {
+            const edu = []
+            snapshot.forEach(item => {
+                const temp = item.val();
+                edu.push([temp.degree, temp.duration, temp.school]);
+                return false;
+            })
+            setEduInfo(edu);
+            console.log("exp: " + edu);
         });
     }
     return (
@@ -71,7 +83,7 @@ const BasicTemplate = ({ phone, email, userAlias }) => {
                 </div>
                 <div className="basic-template-experience-right">
                     {
-                        info.map(function(item, id) {
+                        eduInfo.map(function(item, id) {
                             return(
                                 <div key={id} className="template-data-fragment">
                                     <p className="template-data-fragment-title">{item[0]}</p>

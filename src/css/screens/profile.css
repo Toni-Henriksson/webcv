@@ -13,4 +13,11 @@
     border-color: aqua;
     margin-left: 50px;
 }
+.control-panel{
+    display: flex;
+    flex-direction: column;
+}
+.control-container{
+    margin-bottom: 20px;
+}
 

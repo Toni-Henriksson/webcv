@@ -34,7 +34,7 @@ const AddEducationWidget = () => {
           onSubmit={(event) => {sub(event)}}>
             <div className="section">
             <label className="label">School name
-              <input type="text" placeholder="title"
+              <input type="text" placeholder="school name"
                 onChange={(e)=>{setSchool(e.target.value)}} value={school} />
                 <br/>
             </label>
@@ -42,7 +42,7 @@ const AddEducationWidget = () => {
 
             <div className="section">
             <label className="label">Completed date
-              <input type="text" placeholder="duration"
+              <input type="date" placeholder="duration"
                 onChange={(e)=>{setDuration(e.target.value)}} value={duration}/>
                 <br/>
             </label>
@@ -50,7 +50,7 @@ const AddEducationWidget = () => {
 
             <div className="section">
             <label className="label">Degree name
-            <input type="text" placeholder="description"
+            <input type="text" placeholder="Degree"
               onChange={(e)=>{setDegree(e.target.value)}} value={degree}/>
               <br/>
             </label>

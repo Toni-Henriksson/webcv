@@ -72,8 +72,12 @@ const Profile = () => {
           templateArray[template]
         }
         <div className="control-panel">
-          <WorkExperience></WorkExperience>
-          <AddEducationWidget></AddEducationWidget>
+          <div className="control-container">
+            <WorkExperience></WorkExperience>
+          </div>
+          <div className="control-container">
+            <AddEducationWidget></AddEducationWidget>
+          </div>
         </div>
       </div>
     </>
