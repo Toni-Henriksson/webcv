@@ -1,7 +1,7 @@
 import {React, useState} from "react";
 import { database } from '../../backend/firebase-config';
 import { push, ref, set } from "firebase/database";
-
+import './workexperience.css';
 const WorkExperience = () => {
     const [title, setTitle] = useState('');
     const [duration, setDuration] = useState('');
@@ -17,27 +17,45 @@ const WorkExperience = () => {
           description: description
         })
       .then(() => {
-          //
+          setTitle('');
+          setDuration('');
+          setDescription('');
       })
       .catch((error) => {
           console.error("Error adding document: ", error);
       });
   }
   return (
-    <div>
+    <div className="add-work-container">
     <center>
+      <h2 className="title">Add experience</h2>
         <form
           onSubmit={(event) => {sub(event)}}>
-            <input type="text" placeholder="title"
-              onChange={(e)=>{setTitle(e.target.value)}} />
-              <br/><br/>
-            <input type="text" placeholder="duration"
-              onChange={(e)=>{setDuration(e.target.value)}}/>
-              <br/><br/>
+            <div className="section">
+            <label className="label">Experience title
+              <input type="text" placeholder="title"
+                onChange={(e)=>{setTitle(e.target.value)}} value={title} />
+                <br/>
+            </label>
+            </div>
+
+            <div className="section">
+            <label className="label">Experience duration
+              <input type="text" placeholder="duration"
+                onChange={(e)=>{setDuration(e.target.value)}} value={duration}/>
+                <br/>
+            </label>
+            </div>
+
+            <div className="section">
+            <label className="label">Description of the job
             <input type="text" placeholder="description"
-              onChange={(e)=>{setDescription(e.target.value)}}/>
-              <br/><br/>
-            <button type="submit">Submit</button>
+              onChange={(e)=>{setDescription(e.target.value)}} value={description}/>
+              <br/>
+            </label>
+            </div>
+
+            <button type="submit" className="experience-submit-btn">Submit</button>
         </form>
     </center>
 </div>
