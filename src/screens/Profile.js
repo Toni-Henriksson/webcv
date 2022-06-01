@@ -1,8 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { get, getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { auth } from "../backend/firebase-config";
-import { readFromDB } from "../backend/firebase-utility";
 import '../css/screens/profile.css';
 import NavigationBar from '../components/NavigationBar';
 import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
@@ -18,34 +16,8 @@ const Profile = () => {
   const [phone, setPhone] = useState('')
   const [userAlias, setAlias] = useState('')
 
-
-  const [exData, setExData] = useState([]);
-  const [edData, setEdData] = useState([
-    ["Lab University of Applied Sciences", "10/2022 - 12/2022", "Bachelodr of Software Engineering"],
-    ["Edupoli", "10/2022 - 12/2022", "Electrician"]
-  ]);
-  useEffect(() => {
-    //console.log(readFromDB());
-    async function fetchData() {
-      let userId = author.currentUser.uid;
-      const db = getDatabase();
-      const workDB = ref(db, 'users/' + userId + '/experience/');
-      onValue(workDB, (snapshot) => {
-        const exp = []
-        snapshot.forEach(item => {
-          const temp = item.val();
-          exp.push([temp.title, temp.duration, temp.description]);
-          return false;
-        })
-        setExData(exp);
-      });
-    }
-    fetchData();
-  }, []);
-
-  // All avaible templates basic, modedddrn, retddro, simple
   const templateArray = [
-    <BasicTemplate exData={exData} edData={edData} phone={phone} email={email} userAlias={userAlias}></BasicTemplate>,
+    <BasicTemplate phone={phone} email={email} userAlias={userAlias}></BasicTemplate>,
   ];
 
 
@@ -94,7 +66,6 @@ const Profile = () => {
     <>
       <NavigationBar></NavigationBar>
       <TemplateCarousel></TemplateCarousel>
-      {/*Get stored template id and render thast template from DB*/}
       <div className="profile-wrapper">
         {
           templateArray[template]

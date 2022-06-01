@@ -1,8 +1,28 @@
-import { React } from "react";
+import { React, useState } from "react";
+import { get, getDatabase, onValue, ref } from "firebase/database";
 import './basictemplate.css';
 
-const BasicTemplate = ({ exData, edData, phone, email, userAlias }) => {
+const BasicTemplate = ({ phone, email, userAlias }) => {
+    const [info, setInfo] = useState([]);
+    window.addEventListener('load', () => {
+        Fetchdata();
+    });
 
+    // Fetch the required data usinsg the get() method
+    const Fetchdata = () => {
+        const db = getDatabase();
+        const workDB = ref(db, 'exp');
+        onValue(workDB, (snapshot) => {
+            const exp = []
+            snapshot.forEach(item => {
+                const temp = item.val();
+                exp.push([temp.title, temp.duration, temp.description]);
+                return false;
+            })
+            setInfo(exp);
+            console.log("exp: " + exp);
+        });
+    }
     return (
         <>
         <div className="template-container">
@@ -32,7 +52,7 @@ const BasicTemplate = ({ exData, edData, phone, email, userAlias }) => {
                 </div>
                 <div className="basic-template-experience-right">
                     {
-                        exData.map(function(item, id) {
+                        info.map(function(item, id) {
                             return(
                                 <div key={id} className="template-data-fragment">
                                     <p className="template-data-fragment-title">{item[0]}</p>
@@ -51,7 +71,7 @@ const BasicTemplate = ({ exData, edData, phone, email, userAlias }) => {
                 </div>
                 <div className="basic-template-experience-right">
                     {
-                        edData.map(function(item, id) {
+                        info.map(function(item, id) {
                             return(
                                 <div key={id} className="template-data-fragment">
                                     <p className="template-data-fragment-title">{item[0]}</p>

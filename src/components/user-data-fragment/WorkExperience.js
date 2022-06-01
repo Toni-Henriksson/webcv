@@ -1,4 +1,6 @@
 import {React, useState} from "react";
+import { database } from '../../backend/firebase-config';
+import { push, ref, set } from "firebase/database";
 import { saveUserWorkExperience } from "../../backend/firebase-utility";
 
 const WorkExperience = () => {
@@ -6,38 +8,40 @@ const WorkExperience = () => {
     const [duration, setDuration] = useState('');
     const [description, setDescription] = useState('');
 
-    const handleSending = () => {
-      const arr = [title,duration,description]
-      saveUserWorkExperience(arr)
-      setTitle('')
-      setDescription('')
-      setDuration('')
-    };
-
+    const sub = (e) => {
+      e.preventDefault();
+      const db = database;  
+      // Add data to the store
+      push(ref(db, 'exp'), {
+          title: title,
+          duration: duration,
+          description: description
+        })
+      .then(() => {
+          //
+      })
+      .catch((error) => {
+          console.error("Error adding document: ", error);
+      });
+  }
   return (
-      <>
-    <div className="workexperience-container">
-      <input
-        type="text"
-        placeholder="Job title"
-        value={title}
-        onChange={(e)=>setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Job durdation"
-        value={duration}
-        onChange={(e)=>setDuration(e.target.value)}
-        />
-      <input
-      type="text"
-      placeholder="Job overview"
-      value={description}
-      onChange={(e)=>setDescription(e.target.value)}
-      />
-      <button onClick={() => handleSending()}>Submit</button>
-    </div>
-    </>
+    <div>
+    <center>
+        <form
+          onSubmit={(event) => {sub(event)}}>
+            <input type="text" placeholder="title"
+              onChange={(e)=>{setTitle(e.target.value)}} />
+              <br/><br/>
+            <input type="text" placeholder="duration"
+              onChange={(e)=>{setDuration(e.target.value)}}/>
+              <br/><br/>
+            <input type="text" placeholder="description"
+              onChange={(e)=>{setDescription(e.target.value)}}/>
+              <br/><br/>
+            <button type="submit">Submit</button>
+        </form>
+    </center>
+</div>
   );
 }
 
