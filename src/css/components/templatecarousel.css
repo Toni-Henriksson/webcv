@@ -10,7 +10,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 40%;
 }
 .template-card{
     display: block;
@@ -29,11 +29,8 @@
     color: antiquewhite;
 }
 .carousel-nav{
-    width: 10%;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 5%;
+    height: 100px;
 }
 .carousel-btn{
     width: 100%;

@@ -1,5 +1,4 @@
 import {React, useState, useEffect} from "react";
-import '../css/components/frontpage.css';
 import { useNavigate } from "react-router-dom";
 import '../css/components/templatecarousel.css';
 const templatepng = require('../images/resume.png');
