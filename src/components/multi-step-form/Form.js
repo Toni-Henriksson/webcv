@@ -18,10 +18,6 @@ const Form = () => {
     firstName: "",
     lastName: "",
     username: "",
-    experience: "",
-    education: "",
-    skills: "",
-    links: "",
     phoneNumber: "",
   });
 
@@ -65,12 +61,8 @@ const Form = () => {
                 register(formData.email, 
                         formData.password, 
                         formData.firstName + " " + formData.lastName,
-                        formData.phoneNumber,
                         formData.username,
-                        formData.experience,
-                        formData.education,
-                        formData.skills,
-                        formData.links)
+                        formData.phoneNumber)
                 navigation('/profile');
                 
               } else {

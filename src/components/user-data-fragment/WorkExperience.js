@@ -28,11 +28,11 @@ const WorkExperience = () => {
   return (
     <div className="add-work-container">
     <center>
-      <h2 className="title">Add experience</h2>
+      <h2 className="title">Add work experience</h2>
         <form
           onSubmit={(event) => {sub(event)}}>
             <div className="section">
-            <label className="label">Experience title
+            <label className="label">Work experience title
               <input type="text" placeholder="title"
                 onChange={(e)=>{setTitle(e.target.value)}} value={title} />
                 <br/>

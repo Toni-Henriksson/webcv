@@ -2,12 +2,12 @@ import { auth, database } from './firebase-config';
 import { getDatabase, ref, set, child, get, push } from "firebase/database";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
 
-export const register = async (email, password, fullname, username, experience, education, skills, links, phoneNumber) => {
+export const register = async (email, password, fullname, username, phoneNumber) => {
     try{
         const user = await createUserWithEmailAndPassword(auth, email, password);
 
         // Creates database template for newly created user
-        writeToDB(user.user.uid, email, fullname, username, experience, education, skills, links, phoneNumber);
+        writeToDB(user.user.uid, email, fullname, username, phoneNumber);
         console.log(user);
         console.log("User registered: " + fullname);
     }catch(error){
@@ -28,17 +28,13 @@ export const logout = async () => {
 };
 
 // Writes all information from register multi-page-form to database
-export const writeToDB = async (userId, email, fullname, username, experience, education, skills, links, phoneNumber) => {
+export const writeToDB = async (userId, email, fullname, username, phoneNumber) => {
     const db = database;
     try{
         set(ref(db, 'users/' + userId), {
             email: email,
             fullname: fullname,
             username: username,
-            experience: experience,
-            education: education, 
-            skills: skills,
-            links: links,
             phoneNumber: phoneNumber,
           });
         set(ref(db, 'userrouting/' + username), {
