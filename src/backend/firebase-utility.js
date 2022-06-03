@@ -24,7 +24,11 @@ export const login = async (email, password) => {
 };
 
 export const logout = async () => {
-    await signOut(auth);
+    try {
+        await signOut(auth);
+    } catch (error) {
+        console.log("Error loggin out: " + error)
+    }
 };
 
 // Writes all information from register multi-page-form to database

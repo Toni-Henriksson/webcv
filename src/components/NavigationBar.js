@@ -4,16 +4,17 @@ import { auth } from '../backend/firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { logout } from "../backend/firebase-utility";
 import { useNavigate } from "react-router-dom";
+import { set } from "firebase/database";
 
 const logo = require('../images/webCV-logo.png');
 
 const NavigationBar = () => {
     const [user, setUser] = useState({});
+    let navigation = useNavigate();
 
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     })
-    let navigation = useNavigate();
 
     function handleLogin(){
         navigation('/login');
