@@ -4,7 +4,7 @@ import { auth } from "../../../backend/firebase-config";
 import './basictemplate.css';
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 
-const BasicTemplate = ({ phone, email, userAlias, fullname }) => {
+const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
     const [info, setInfo] = useState([]);
     const [eduInfo, setEduInfo] = useState([]);
     const author = getAuth();
@@ -51,11 +51,11 @@ const BasicTemplate = ({ phone, email, userAlias, fullname }) => {
         <div className="template-container">
             <div className="basic-template-header">
                 <div className="basic-template-header-left">
-                    <h1 style={{color: "black", fontSize: "35px"}}>{fullname}</h1>
+                    <h1 style={{color: "black", fontSize: "35px"}}>{templateData == null ? fullname : templateData.fullname}</h1>
                 </div>
                 <div className="basic-template-header-right">
-                    <p>email: {email}</p>
-                    <p>phone: {phone}</p>
+                    <p>email: {templateData == null ? email : templateData.email}</p>
+                    <p>phone: {templateData == null ? phone : templateData.phoneNumber}</p>
                     <p>github: </p>
                 </div>
             </div>
