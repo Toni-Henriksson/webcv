@@ -1,19 +1,29 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { get, getDatabase, onValue, ref } from "firebase/database";
+import { auth } from "../../../backend/firebase-config";
 import './basictemplate.css';
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 const BasicTemplate = ({ phone, email, userAlias }) => {
     const [info, setInfo] = useState([]);
     const [eduInfo, setEduInfo] = useState([]);
+    const author = getAuth();
+    const [infoFetch,setInfoFetch ] = useState(false);
+
     window.addEventListener('load', () => {
-        Fetchdata();
+        //Fetchdata();
+    });
+    onAuthStateChanged(author, (user)=>{
+        if(user && infoFetch == false){
+            const uid = user.uid;
+            fetchWorkExperience(uid);
+            setInfoFetch(true);
+        }
     });
 
-    // Fetch the required data usinsg the get() method
-    const Fetchdata = () => {
+    function fetchWorkExperience(uid){
         const db = getDatabase();
-        const workDB = ref(db, 'exp');
-        const eduDB = ref(db, 'edu');
+        const workDB = ref(db, 'users/' + uid + '/exp');
         onValue(workDB, (snapshot) => {
             const exp = []
             snapshot.forEach(item => {
@@ -22,8 +32,24 @@ const BasicTemplate = ({ phone, email, userAlias }) => {
                 return false;
             })
             setInfo(exp);
-            console.log("exp: " + exp);
         });
+    }
+    // Fetch the required data usinsg the get() methsod
+    const Fetchdata = async () => {
+        const db = getDatabase();
+        const workDB = ref(db, 'exp');
+        const eduDB = ref(db, 'edu');
+        
+        /*onValue(workDB, (snapshot) => {
+            const exp = []
+            snapshot.forEach(item => {
+                const temp = item.val();
+                exp.push([temp.title, temp.duration, temp.description]);
+                return false;
+            })
+            setInfo(exp);
+            console.log("exp: " + exp);
+        }); */
         onValue(eduDB, (snapshot) => {
             const edu = []
             snapshot.forEach(item => {

@@ -16,7 +16,6 @@ const Profile = () => {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [userAlias, setAlias] = useState('')
-
   const templateArray = [
     <BasicTemplate phone={phone} email={email} userAlias={userAlias}></BasicTemplate>,
   ];

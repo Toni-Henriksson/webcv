@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import { database } from '../../backend/firebase-config';
+import { database, auth } from '../../backend/firebase-config';
 import { push, ref, set } from "firebase/database";
 import './workexperience.css';
 const WorkExperience = () => {
@@ -9,9 +9,10 @@ const WorkExperience = () => {
 
     const sub = (e) => {
       e.preventDefault();
-      const db = database;  
+      const db = database; 
+      const uid = auth.currentUser.uid; 
       // Add data to the store
-      push(ref(db, 'exp'), {
+      push(ref(db, 'users/' + uid + '/exp'), {
           title: title,
           duration: duration,
           description: description
