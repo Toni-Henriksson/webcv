@@ -5,8 +5,9 @@ import '../css/screens/profile.css';
 import NavigationBar from '../components/NavigationBar';
 import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
 import TemplateCarousel from "../components/TemplateCarousel";
-import WorkExperience from "../components/user-data-fragment/WorkExperience";
-import AddEducationWidget from "../components/user-data-fragment/AddEducationWidget";
+import WorkExperience from "../components/user-data-fragment/add-work-experience-widget/WorkExperience";
+import AddEducationWidget from "../components/user-data-fragment/add-education-widget/AddEducationWidget";
+import AddLinksWidget from "../components/user-data-fragment/add-links-widget/AddLinksWidget";
 
 const Profile = () => {
   // Current selected template
@@ -87,6 +88,9 @@ const Profile = () => {
           </div>
           <div className="control-container">
             <AddEducationWidget></AddEducationWidget>
+          </div>
+          <div className="control-container">
+            <AddLinksWidget></AddLinksWidget>
           </div>
         </div>
       </div>

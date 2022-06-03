@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import { database, auth  } from '../../backend/firebase-config';
+import { database, auth  } from '../../../backend/firebase-config';
 import { push, ref, set } from "firebase/database";
 import './addeducationwidget.css';
 
