@@ -7,6 +7,7 @@ import { onAuthStateChanged, getAuth } from "firebase/auth";
 const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
     const [info, setInfo] = useState([]);
     const [eduInfo, setEduInfo] = useState([]);
+    const [about, setAbout] = useState('');
     const author = getAuth();
     const [infoFetch,setInfoFetch ] = useState(false);
 
@@ -26,6 +27,8 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
         const db = getDatabase();
         const workDB = ref(db, 'users/' + uid + '/exp');
         const eduDB = ref(db, 'users/' + uid + '/edu');
+        const aboutDB = ref(db, 'users/' + uid + '/about');
+
         onValue(workDB, (snapshot) => {
             const exp = []
             snapshot.forEach(item => {
@@ -43,6 +46,13 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
                 return false;
             })
             setEduInfo(edu);
+        });
+        onValue(aboutDB, (snapshot) => {
+            snapshot.forEach(item => {
+                const temp = item.val();
+                setAbout(temp);
+                return false;
+            })
         });
     }
     
@@ -65,7 +75,7 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
                     <h1>Personal profile</h1>
                 </div>
                 <div className="basic-template-experience-right">
-                    <p>Moi</p>
+                    <p>ab: {about}</p>
                 </div>
             </div>
 
