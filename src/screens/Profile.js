@@ -16,8 +16,10 @@ const Profile = () => {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [userAlias, setAlias] = useState('')
+  const [fullname, setFullname] = useState('')
+
   const templateArray = [
-    <BasicTemplate phone={phone} email={email} userAlias={userAlias}></BasicTemplate>,
+    <BasicTemplate phone={phone} email={email} userAlias={userAlias} fullname={fullname}></BasicTemplate>,
   ];
 
 
@@ -50,6 +52,15 @@ const Profile = () => {
           const data = snapshot.val();
           if (data !== null) {
             setAlias(data)
+          }
+          else {
+            console.log("No data from DB")
+          }
+        });
+        onValue(ref(getDatabase(), 'users/' + uid + '/fullname'), snapshot => {
+          const data = snapshot.val();
+          if (data !== null) {
+            setFullname(data)
           }
           else {
             console.log("No data from DB")

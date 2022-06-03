@@ -4,26 +4,28 @@ import { auth } from "../../../backend/firebase-config";
 import './basictemplate.css';
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 
-const BasicTemplate = ({ phone, email, userAlias }) => {
+const BasicTemplate = ({ phone, email, userAlias, fullname }) => {
     const [info, setInfo] = useState([]);
     const [eduInfo, setEduInfo] = useState([]);
     const author = getAuth();
     const [infoFetch,setInfoFetch ] = useState(false);
 
     window.addEventListener('load', () => {
-        //Fetchdata();
+        //
     });
     onAuthStateChanged(author, (user)=>{
         if(user && infoFetch == false){
             const uid = user.uid;
-            fetchWorkExperience(uid);
+            fetchUserData(uid);
+            // Manual check for checking if data is already fetched -> no need to re-fetch (Avoid infinite loops)
             setInfoFetch(true);
         }
     });
 
-    function fetchWorkExperience(uid){
+    function fetchUserData(uid){
         const db = getDatabase();
         const workDB = ref(db, 'users/' + uid + '/exp');
+        const eduDB = ref(db, 'users/' + uid + '/edu');
         onValue(workDB, (snapshot) => {
             const exp = []
             snapshot.forEach(item => {
@@ -33,23 +35,6 @@ const BasicTemplate = ({ phone, email, userAlias }) => {
             })
             setInfo(exp);
         });
-    }
-    // Fetch the required data usinsg the get() methsod
-    const Fetchdata = async () => {
-        const db = getDatabase();
-        const workDB = ref(db, 'exp');
-        const eduDB = ref(db, 'edu');
-        
-        /*onValue(workDB, (snapshot) => {
-            const exp = []
-            snapshot.forEach(item => {
-                const temp = item.val();
-                exp.push([temp.title, temp.duration, temp.description]);
-                return false;
-            })
-            setInfo(exp);
-            console.log("exp: " + exp);
-        }); */
         onValue(eduDB, (snapshot) => {
             const edu = []
             snapshot.forEach(item => {
@@ -58,15 +43,15 @@ const BasicTemplate = ({ phone, email, userAlias }) => {
                 return false;
             })
             setEduInfo(edu);
-            console.log("exp: " + edu);
         });
     }
+    
     return (
         <>
         <div className="template-container">
             <div className="basic-template-header">
                 <div className="basic-template-header-left">
-                    <h1 style={{color: "black", fontSize: "35px"}}>{userAlias}</h1>
+                    <h1 style={{color: "black", fontSize: "35px"}}>{fullname}</h1>
                 </div>
                 <div className="basic-template-header-right">
                     <p>email: {email}</p>

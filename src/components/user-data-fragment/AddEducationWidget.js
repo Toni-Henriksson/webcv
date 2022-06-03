@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import { database } from '../../backend/firebase-config';
+import { database, auth  } from '../../backend/firebase-config';
 import { push, ref, set } from "firebase/database";
 import './addeducationwidget.css';
 
@@ -11,8 +11,9 @@ const AddEducationWidget = () => {
     const sub = (e) => {
       e.preventDefault();
       const db = database;  
+      const uid = auth.currentUser.uid; 
       // Add data to the store
-      push(ref(db, 'edu'), {
+      push(ref(db, 'users/' + uid + '/edu'), {
           school: school,
           duration: duration,
           degree: degree
