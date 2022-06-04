@@ -53,9 +53,9 @@
     border-color: #252525;
 }
 .nav-search-bar{
-    width: 30%;
-    height: 50%;
-    font-size: 25px;
+    width: 80%;
+    height: 45px;
+    font-size: 20px;
     border-radius: 50px;
     text-align: center;
     border-style: none;
@@ -64,5 +64,12 @@
 }
 .nav-search-bar:focus{
     outline: none;
+}
+.search-submit-btn{
+    position: absolute;
+    background-color: #2e2c2c;
+    height: 45px;
+    border-style: none;
+    border-radius: 25px;
 }
 
