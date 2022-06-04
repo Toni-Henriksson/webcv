@@ -9,6 +9,7 @@ const logo = require('../images/webCV-logo.png');
 const profile = require('../images/profile.png');
 const NavigationBar = () => {
     const [user, setUser] = useState({});
+    const [searchUser, setSearchUser] = useState('');
     let navigation = useNavigate();
 
     onAuthStateChanged(auth, (currentUser) => {
@@ -28,6 +29,10 @@ const NavigationBar = () => {
     function handleProfile(){
         navigation('/profile');
     }
+    const sub = (e) => {
+        e.preventDefault();
+        console.log("Search")
+    }
     return (
         <>
         <nav className="nav">
@@ -36,7 +41,8 @@ const NavigationBar = () => {
                 <a href="/"><img src={logo} alt="Logo" width="100px" height="100px"></img></a>
             </div>
             <div className="nav-middle">
-                <input type="text" className="nav-search-bar"></input>
+                    <input type="text" placeholder="Search profile.." className="nav-search-bar"></input>
+                    <button type="submit" className="experience-submit-btn">Search</button>
             </div>
             <div className="nav-right">
                 {
