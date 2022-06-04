@@ -7,6 +7,7 @@ import { onAuthStateChanged, getAuth } from "firebase/auth";
 const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
     const [info, setInfo] = useState([]);
     const [eduInfo, setEduInfo] = useState([]);
+    const [skills, setSkills] = useState([]);
     const [about, setAbout] = useState('');
     const author = getAuth();
     const [infoFetch,setInfoFetch ] = useState(false);
@@ -14,6 +15,7 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
     window.addEventListener('load', () => {
         //
     });
+
     onAuthStateChanged(author, (user)=>{
         if(user && infoFetch == false){
             const uid = user.uid;
@@ -28,7 +30,9 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
         const workDB = ref(db, 'users/' + uid + '/exp');
         const eduDB = ref(db, 'users/' + uid + '/edu');
         const aboutDB = ref(db, 'users/' + uid + '/about');
+        const skillsDB = ref(db, 'users/' + uid + '/skills');
 
+        // Work experience onValue listener
         onValue(workDB, (snapshot) => {
             const exp = []
             snapshot.forEach(item => {
@@ -38,6 +42,7 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
             })
             setInfo(exp);
         });
+        // Education onValue listener
         onValue(eduDB, (snapshot) => {
             const edu = []
             snapshot.forEach(item => {
@@ -47,12 +52,22 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
             })
             setEduInfo(edu);
         });
+        // About section text onValue listener
         onValue(aboutDB, (snapshot) => {
             snapshot.forEach(item => {
                 const temp = item.val();
                 setAbout(temp);
                 return false;
             })
+        });
+        onValue(skillsDB, (snapshot) => {
+            const ski = []
+            snapshot.forEach(item => {
+                const temp = item.val();
+                ski.push([temp.skill]);
+                return false;
+            })
+            setSkills(ski);
         });
     }
     
@@ -75,7 +90,7 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
                     <h1>Personal profile</h1>
                 </div>
                 <div className="basic-template-experience-right">
-                    <p>ab: {about}</p>
+                    <p>{about}</p>
                 </div>
             </div>
 
@@ -122,7 +137,17 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
                     <h1>Key Skills</h1>
                 </div>
                 <div className="basic-template-experience-right">
-                    <p>coming soon..</p>
+                    <div className="skills-container">
+                    {
+                        skills.map(function(item, id) {
+                            return(
+                                <div key={id} className="skill-container-item">
+                                    <p className="template-data-fragment-title">{item}</p>
+                                </div>
+                            )
+                        }) 
+                    }
+                    </div>
                 </div>
             </div>
         </div>  

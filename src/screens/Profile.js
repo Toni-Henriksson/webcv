@@ -9,6 +9,7 @@ import WorkExperience from "../components/user-data-fragment/add-work-experience
 import AddEducationWidget from "../components/user-data-fragment/add-education-widget/AddEducationWidget";
 import AddLinksWidget from "../components/user-data-fragment/add-links-widget/AddLinksWidget";
 import AddTextWidget from "../components/user-data-fragment/add-text-widget/AddTextWidget";
+import AddSkillsWidget from "../components/user-data-fragment/add-skills-widget/AddSkillsWidget";
 
 const Profile = () => {
   // Current selected template
@@ -95,6 +96,9 @@ const Profile = () => {
           </div>
           <div className="control-container">
             <AddTextWidget></AddTextWidget>
+          </div>
+          <div className="control-container">
+            <AddSkillsWidget></AddSkillsWidget>
           </div>
         </div>
       </div>

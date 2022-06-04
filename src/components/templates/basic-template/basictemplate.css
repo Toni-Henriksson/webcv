@@ -45,6 +45,18 @@
 .basic-template-experience-right{
     width: 70%;
 }
+.skills-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-style: solid;
+    height: 90%;
+}
+.skill-container-item{
+    height: 30px;
+    border-style: solid;
+    border-color: aqua;
+}
 .template-data-fragment{
     flex-direction: column;
     border-style: solid;
