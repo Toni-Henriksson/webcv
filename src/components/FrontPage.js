@@ -1,4 +1,4 @@
-import {React} from "react";
+import {React, useEffect} from "react";
 import '../css/components/frontpage.css';
 import { useNavigate } from "react-router-dom";
 const resumepng = require('../images/resume.png');
@@ -6,6 +6,7 @@ const resumepng = require('../images/resume.png');
 
 const FrontPage = () => {
     let navigation = useNavigate();
+     
     const handleSignUp = () =>{
        navigation('/register');
     }

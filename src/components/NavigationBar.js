@@ -4,10 +4,9 @@ import { auth } from '../backend/firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { logout } from "../backend/firebase-utility";
 import { useNavigate } from "react-router-dom";
-import { set } from "firebase/database";
 
 const logo = require('../images/webCV-logo.png');
-
+const profile = require('../images/profile.png');
 const NavigationBar = () => {
     const [user, setUser] = useState({});
     let navigation = useNavigate();
@@ -33,10 +32,27 @@ const NavigationBar = () => {
         <>
         <nav className="nav">
         <div className="nav-wrapper">
-            <a href="/"><img src={logo} alt="Logo" width="100px" height="100px"></img></a>
-            {
-                user ? <button className="btn-nav" onClick={handleLogout}>Sign out</button> : <button className="btn-nav" onClick={handleLogin}>Sign in</button>
-            }
+            <div className="nav-left">
+                <a href="/"><img src={logo} alt="Logo" width="100px" height="100px"></img></a>
+            </div>
+            <div className="nav-middle">
+                <input type="text" className="nav-search-bar"></input>
+            </div>
+            <div className="nav-right">
+                {
+                    user ? 
+                    <div className="nav-right">
+                        <div className="nav-right-item">
+                            <a href="/profile"><img src={profile} alt="Logo" width="35px" height="35px"></img></a>
+                        </div>
+                        <div className="nav-right-item">
+                            <button className="btn-nav" onClick={handleLogout}>Sign out</button>
+                        </div>
+                    </div>
+                    : 
+                    <button className="btn-nav" onClick={handleLogin}>Sign in</button>
+                }
+            </div>
         </div>
         </nav>
         </>

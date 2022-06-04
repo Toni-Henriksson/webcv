@@ -1,7 +1,7 @@
 .profile-wrapper{
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    margin-top: 40px;
     background-color: #222222;
 }
 .resume-preview-wrapper{
@@ -9,10 +9,10 @@
     justify-content: center;
     margin-top: 0%;
     height: 900px;
-    width: 50%;
+    width: 60%;
 }
 .control-panel{
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
