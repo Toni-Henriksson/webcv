@@ -61,14 +61,15 @@
     border-style: none;
     background-color: #dadada;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    outline: none !important;
 }
 .nav-search-bar:focus{
-    outline: none;
+    border-style: none;
 }
 .search-submit-btn{
     position: absolute;
     background-color: #2e2c2c;
-    height: 45px;
+    height: 50px;
     border-style: none;
     border-radius: 25px;
 }

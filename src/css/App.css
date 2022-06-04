@@ -29,8 +29,5 @@ body{
 h1{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-*:focus {
-  outline: none;
-}
 
 
