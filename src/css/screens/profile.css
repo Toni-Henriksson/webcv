@@ -1,21 +1,22 @@
 .profile-wrapper{
     display: flex;
     flex-direction: row;
-    justify-content: center;
     margin-top: 20px;
     background-color: #222222;
 }
-.profile-ctrl{
-    width: 600px;
-    background-color: rgb(255, 255, 255);
-    border-style: solid;
-    border-radius: 25px;
-    border-color: aqua;
-    margin-left: 50px;
+.resume-preview-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 0%;
+    height: 900px;
+    width: 50%;
 }
 .control-panel{
+    width: 50%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 .control-container{
     margin-bottom: 20px;
