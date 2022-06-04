@@ -33,8 +33,7 @@ const AddLinksWidget = () => {
           onSubmit={(event) => {sub(event)}}>
             <div className="section">
             <label className="label">Platform
-              <input type="text" placeholder="Platform"
-                onChange={(e)=>{setPlatform(e.target.value)}} value={platform} />
+              <input type="text" placeholder="Platform" onChange={(e)=>{setPlatform(e.target.value)}} value={platform} />
                 <br/>
             </label>
             </div>

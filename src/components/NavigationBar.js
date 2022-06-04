@@ -4,12 +4,12 @@ import { auth } from '../backend/firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { logout } from "../backend/firebase-utility";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const logo = require('../images/webCV-logo.png');
 const profile = require('../images/profile.png');
 const NavigationBar = () => {
     const [user, setUser] = useState({});
-    const [searchUser, setSearchUser] = useState('');
     let navigation = useNavigate();
 
     onAuthStateChanged(auth, (currentUser) => {
@@ -29,20 +29,14 @@ const NavigationBar = () => {
     function handleProfile(){
         navigation('/profile');
     }
-    const sub = (e) => {
-        e.preventDefault();
-        console.log("Search")
-    }
     return (
-        <>
         <nav className="nav">
         <div className="nav-wrapper">
             <div className="nav-left">
                 <a href="/"><img src={logo} alt="Logo" width="100px" height="100px"></img></a>
             </div>
             <div className="nav-middle">
-                    <input type="text" placeholder="Search profile.." className="nav-search-bar"></input>
-                    <button type="submit" className="experience-submit-btn">Search</button>
+                <SearchBar></SearchBar>
             </div>
             <div className="nav-right">
                 {
@@ -61,8 +55,6 @@ const NavigationBar = () => {
             </div>
         </div>
         </nav>
-        </>
-
     );
 }
 
