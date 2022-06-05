@@ -79,14 +79,13 @@ const Profile = () => {
   return (
     <>
       <NavigationBar></NavigationBar>
-      <TemplateCarousel></TemplateCarousel>
+      {/*<TemplateCarousel></TemplateCarousel>*/}
       <div className="profile-wrapper">
         <div className="resume-preview-wrapper">
         {
           templateArray[template]
         }
         </div>
-
         <div className="control-panel">
           <div className="control-container">
             <WorkExperience></WorkExperience>
