@@ -12,7 +12,7 @@ const SignUpInfo = ({ formData, setFormData }) => {
         }
       />
       <input
-        type="text"
+        type="password"
         placeholder="Password..."
         value={formData.password}
         onChange={(event) =>
@@ -20,7 +20,7 @@ const SignUpInfo = ({ formData, setFormData }) => {
         }
       />
       <input
-        type="text"
+        type="password"
         placeholder="Confirm Password..."
         value={formData.confirmPassword}
         onChange={(event) =>
