@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar";
 
 const logo = require('../images/webCV-logo.png');
 const profile = require('../images/profile.png');
+
 const NavigationBar = () => {
     const [user, setUser] = useState({});
     let navigation = useNavigate();
