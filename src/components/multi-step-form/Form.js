@@ -58,12 +58,15 @@ const Form = () => {
             onClick={() => {
               if (page === FormTitles.length - 1) {
                 alert("FORM SUBMITTED");
-                register(formData.email, 
-                        formData.password, 
-                        formData.firstName + " " + formData.lastName,
-                        formData.username,
-                        formData.phoneNumber)
-                navigation('/profile');
+                // For testing, not leaving this monster of a code here long.
+                if (formData.email != "" && formData.firstName != "" && formData.lastName != "" && formData.password != "" && formData.phoneNumber != "" && formData.username != "") {
+                  register(formData.email,
+                    formData.password,
+                    formData.firstName + " " + formData.lastName,
+                    formData.username,
+                    formData.phoneNumber)
+                  navigation('/profile');
+                } else{console.log("Not all required fields are filled!")}
                 
               } else {
                 setPage((currPage) => currPage + 1);
