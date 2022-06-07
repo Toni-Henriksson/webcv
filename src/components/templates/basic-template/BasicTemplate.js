@@ -4,7 +4,7 @@ import { auth } from "../../../backend/firebase-config";
 import './basictemplate.css';
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 
-const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
+const BasicTemplate = ({ phone, email, userAlias, fullname, templateData, urlUser }) => {
     const [info, setInfo] = useState([]);
     const [eduInfo, setEduInfo] = useState([]);
     const [skills, setSkills] = useState([]);
@@ -13,7 +13,7 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
     const [infoFetch,setInfoFetch ] = useState(false);
 
     window.addEventListener('load', () => {
-        //
+        //setInfoFetch(false)
     });
 
     onAuthStateChanged(author, (user)=>{
@@ -21,6 +21,10 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
             const uid = user.uid;
             fetchUserData(uid);
             // Manual check for checking if data is already fetched -> no need to re-fetch (Avoid infinite loops)
+            setInfoFetch(true);
+        }
+        if(!user){
+            fetchUserData(urlUser);
             setInfoFetch(true);
         }
     });
@@ -72,6 +76,7 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData }) => {
     }
     
     return (
+        
         <>
         <div className="template-container">
             <div className="basic-template-header">

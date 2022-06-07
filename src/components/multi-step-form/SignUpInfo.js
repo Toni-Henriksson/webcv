@@ -4,7 +4,7 @@ const SignUpInfo = ({ formData, setFormData }) => {
   return (
     <div className="sign-up-container">
       <input
-        type="text"
+        type="email"
         placeholder="Email..."
         value={formData.email}
         onChange={(event) =>

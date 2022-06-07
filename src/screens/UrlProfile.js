@@ -47,7 +47,7 @@ const UrlProfile = () => {
         <>
         <NavigationBar></NavigationBar>
         <div className="url-profile-wrapper">
-            <BasicTemplate templateData={uidData}></BasicTemplate>
+            <BasicTemplate templateData={uidData} urlUser={user}></BasicTemplate>
         </div>
       </>
     );
