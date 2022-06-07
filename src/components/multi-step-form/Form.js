@@ -57,7 +57,6 @@ const Form = () => {
           <button
             onClick={() => {
               if (page === FormTitles.length - 1) {
-                alert("FORM SUBMITTED");
                 // For testing, not leaving this monster of a code here long.
                 if (formData.email != "" && formData.firstName != "" && formData.lastName != "" && formData.password != "" && formData.phoneNumber != "" && formData.username != "") {
                   register(formData.email,

@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { get, getDatabase, onValue, ref } from "firebase/database";
 import { auth } from "../../../backend/firebase-config";
+import { useParams } from 'react-router-dom';
 import './basictemplate.css';
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 
@@ -11,23 +12,44 @@ const BasicTemplate = ({ phone, email, userAlias, fullname, templateData, urlUse
     const [about, setAbout] = useState('');
     const author = getAuth();
     const [infoFetch,setInfoFetch ] = useState(false);
+    const [urlUserManual, setUrlUserManual] = useState('');
 
+    const params = useParams();
     window.addEventListener('load', () => {
-        //setInfoFetch(false)
     });
+    useEffect(()=>{
+        GetUrlUserId();
+    },[])
 
     onAuthStateChanged(author, (user)=>{
+        // If user navigates to his own profiles url
         if(user && infoFetch == false){
             const uid = user.uid;
             fetchUserData(uid);
             // Manual check for checking if data is already fetched -> no need to re-fetch (Avoid infinite loops)
             setInfoFetch(true);
         }
-        if(!user){
-            fetchUserData(urlUser);
-            setInfoFetch(true);
+        // If unregistered/logged in user searches for an user profile by url
+        else if(!user){
+            const uid = urlUser
+            fetchUserData(uid);
         }
     });
+    
+    // Handle setting profile data match the searched profile in the url
+    function GetUrlUserId(){
+        onValue(ref(getDatabase(),'userrouting/'+ params.username), snapshot=>{
+            const data = snapshot.val();
+            if(data !== null){
+               const tempUid = data.uid;
+               setUrlUserManual(tempUid);
+               fetchUserData(tempUid);
+            }
+            else{
+                console.log("No data receivsded from the backend of this user :(")
+            }
+        })
+    }
 
     function fetchUserData(uid){
         const db = getDatabase();

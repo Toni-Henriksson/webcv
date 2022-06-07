@@ -6,12 +6,10 @@ import { auth } from "../backend/firebase-config";
 const Home = () => {
   const [user, setUser] = useState(false);
   var userFetch = auth.currentUser;
-  console.log("moi")
   useEffect(() => {
     if(userFetch != null) {
         console.log("User logged in: " + userFetch)
     }
-    console.log("user:" + userFetch)
   }, [])
 
     return (
