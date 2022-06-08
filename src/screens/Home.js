@@ -3,6 +3,7 @@ import '../css/screens/home.css';
 import NavigationBar from '../components/NavigationBar';
 import FrontPage from "../components/FrontPage";
 import { auth } from "../backend/firebase-config";
+
 const Home = () => {
   const [user, setUser] = useState(false);
   var userFetch = auth.currentUser;

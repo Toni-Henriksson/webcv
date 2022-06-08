@@ -1,8 +1,7 @@
 import {React, useEffect} from "react";
 import '../css/components/frontpage.css';
 import { useNavigate } from "react-router-dom";
-const resumepng = require('../images/resume.png');
-
+import Card from "./animated-card/Card";
 
 const FrontPage = () => {
     let navigation = useNavigate();
@@ -24,7 +23,8 @@ const FrontPage = () => {
                 </div>
             </div>
             <div className="front-page-container-right">
-                <img src={resumepng} alt="Logo" ></img>
+                <Card>
+                </Card>
             </div>
 
         </div>
