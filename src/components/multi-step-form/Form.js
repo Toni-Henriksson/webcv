@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Form = () => {
     let navigation = useNavigate();
   const [page, setPage] = useState(0);
-
+  const [errorMsg, setErrorMsg] = useState('');
   // Template for DB
   const [formData, setFormData] = useState({
     email: "",
@@ -21,15 +21,13 @@ const Form = () => {
     phoneNumber: "",
   });
 
-  const FormTitles = ["Sign Up", "Personal Info", "Other"];
+  const FormTitles = ["Sign Up", "Personal Info"];
 
   const PageDisplay = () => {
     if (page === 0) {
       return <SignUpInfo formData={formData} setFormData={setFormData} />;
-    } else if (page === 1) {
-      return <PersonalInfo formData={formData} setFormData={setFormData} />;
     } else{
-      return <OtherInfo formData={formData} setFormData={setFormData} />;
+      return <PersonalInfo formData={formData} setFormData={setFormData} />;
     }
   };
 
@@ -37,7 +35,7 @@ const Form = () => {
     <div className="form">
       <div className="progressbar">
         <div
-          style={{ width: page === 0 ? "33.3%" : page == 1 ? "66.6%" : "100%" }}
+          style={{ width: page === 0 ? "50%" : page == 1 ? "100%" : "100%" }}
         ></div>
       </div>
       <div className="form-container">
@@ -65,7 +63,10 @@ const Form = () => {
                     formData.username,
                     formData.phoneNumber)
                   navigation('/profile');
-                } else{console.log("Not all required fields are filled!")}
+                } else{
+                  let emsg = "Not all required fields are filled."
+                  setErrorMsg(emsg)
+                }
                 
               } else {
                 setPage((currPage) => currPage + 1);
@@ -76,6 +77,7 @@ const Form = () => {
           </button>
         </div>
       </div>
+      {errorMsg ? <p>{errorMsg}</p> : null}
     </div>
   );
 }

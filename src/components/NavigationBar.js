@@ -51,7 +51,7 @@ const NavigationBar = () => {
                         </div>
                     </div>
                     : 
-                    <button className="btn-nav" onClick={handleLogin}>Sign in</button>
+                    <button className="unsign-btn-nav" onClick={handleLogin}>Sign in</button>
                 }
             </div>
         </div>

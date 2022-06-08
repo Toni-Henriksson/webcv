@@ -52,6 +52,22 @@
     color: #252525;
     border-color: #252525;
 }
+.unsign-btn-nav{
+    margin: auto;
+    background-color: #2e2c2c;
+    width: 150px;
+    height: 50px;
+    color: #56c9ff;
+    border-color: #56c9ff;
+    border-radius: 25px;
+    border-width: 3px;
+    font-size: 25px;
+}
+.unsign-btn-nav:hover{
+    background-color: #56c9ff;
+    color: #252525;
+    border-color: #252525;
+}
 .nav-search-bar{
     width: 90%;
     height: 45px;
