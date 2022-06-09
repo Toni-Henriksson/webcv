@@ -12,80 +12,49 @@ import AddTextWidget from "../components/user-data-fragment/add-text-widget/AddT
 import AddSkillsWidget from "../components/user-data-fragment/add-skills-widget/AddSkillsWidget";
 
 const Profile = () => {
-  // Current selected template
   const [template, setTemplate] = useState(0);
   const author = getAuth();
-
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [userAlias, setAlias] = useState('')
-  const [fullname, setFullname] = useState('')
+  const [infoFetch, setInfoFetch] = useState(false);
+  const [data, setData] = useState([]);
 
   const templateArray = [
-    <BasicTemplate phone={phone} email={email} userAlias={userAlias} fullname={fullname}></BasicTemplate>,
+    <BasicTemplate
+      templateData={data}
+    ></BasicTemplate>,
   ];
 
 
-  useEffect(() => {
-    // Gets data from user-specific db and stores it to setData state. (render them to screen after)
-    onAuthStateChanged(author, (user) => {
-      if (user) {
-        const uid = user.uid;
-        onValue(ref(getDatabase(), 'users/' + uid + '/phoneNumber'), snapshot => {
-          const data = snapshot.val();
-          if (data !== null) {
-            setPhone(data)
-          }
-          else {
-            console.log("No data from DB")
-          }
-        });
+  onAuthStateChanged(author, (user) => {
+    if (user && infoFetch == false) {
+      const uid = user.uid;
+      //fetchUserData(uid);
+      setInfoFetch(true);
+    }
+  }); 
 
-        onValue(ref(getDatabase(), 'users/' + uid + '/email'), snapshot => {
-          const data = snapshot.val();
-          if (data !== null) {
-            setEmail(data)
-          }
-          else {
-            console.log("No data from DB")
-          }
-        });
+  // This is crashing the site
+  function fetchUserData(uid) {
+    const db = getDatabase();
 
-        onValue(ref(getDatabase(), 'users/' + uid + '/username'), snapshot => {
-          const data = snapshot.val();
-          if (data !== null) {
-            setAlias(data)
-          }
-          else {
-            console.log("No data from DB")
-          }
-        });
-        onValue(ref(getDatabase(), 'users/' + uid + '/fullname'), snapshot => {
-          const data = snapshot.val();
-          if (data !== null) {
-            setFullname(data)
-          }
-          else {
-            console.log("No data from DB")
-          }
-        });
-      } else {
-        // User is signed out
-        console.log("User not signed in.");
+    // Basic information
+    onValue(ref(getDatabase(), 'users/' + uid), snapshot => {
+      const dataz = snapshot.val();
+      if (dataz !== null) {
+        setData(dataz);
       }
-    });
-  }, []);
+      else {
+        console.log("No data from DcB")
+      }
+    })
+
+  }
 
   return (
     <>
       <NavigationBar></NavigationBar>
       {/*<TemplateCarousel></TemplateCarousel>*/}
       <div className="profile-wrapper">
-        <div className="resume-preview-wrapper">
-        {
-          templateArray[template]
-        }
-        </div>
+        <div className="resume-preview-wrapper">{templateArray[template]}</div>
         <div className="control-panel">
           <div className="control-container">
             <WorkExperience></WorkExperience>
