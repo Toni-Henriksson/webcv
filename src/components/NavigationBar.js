@@ -43,7 +43,7 @@ const NavigationBar = () => {
                 {
                     user ? 
                     <div className="nav-right">
-                        <div className="nav-right-item">
+                        <div className="nav-right-item-profile">
                             <a href="/profile"><img src={profile} alt="Logo" width="35px" height="35px"></img></a>
                         </div>
                         <div className="nav-right-item">

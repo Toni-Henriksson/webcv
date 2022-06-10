@@ -36,6 +36,10 @@
     align-content: center;
     justify-content: center;
 }
+.nav-right-item-profile{
+    display: block;
+    margin: auto;
+}
 .btn-nav{
     background-color: #2e2c2c;
     width: 150px;
