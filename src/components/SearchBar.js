@@ -6,12 +6,9 @@ const SearchBar = () => {
     const [search, setSearch] = useState('');
     let navigation = useNavigate();
     const sub = (e) => {
-        e.preventDefault();
+        //e.preventDefault();
         // TODO: logic to  check if route exists
-        if(search !== ''){
-            navigation("/" + search);
-            setSearch('');
-        }
+        navigation("/" + search);
     }
   return (
     <div className="nav-middle">

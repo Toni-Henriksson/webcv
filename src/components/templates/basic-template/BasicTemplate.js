@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { get, getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import './basictemplate.css';
 
@@ -21,6 +21,7 @@ const BasicTemplate = ({ templateData, experience, education, skills, about }) =
             setInfoFetch(true);
         }
     }); 
+
     function fetchUserData(uid){
         const db = getDatabase();
         const workDB = ref(db, 'users/' + uid + '/exp');
@@ -68,7 +69,7 @@ const BasicTemplate = ({ templateData, experience, education, skills, about }) =
             });
             setpSkills(ski);
         }); 
-    }
+    } 
 
     return (        
         <>

@@ -22,7 +22,7 @@ const NavigationBar = () => {
     }
     function handleLogout(){
         logout();
-        navigation('/');
+        //navigation('/');
     }
     function handleRegister(){
         navigation('/register');
