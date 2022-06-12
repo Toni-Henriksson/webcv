@@ -47,11 +47,11 @@ const NavigationBar = () => {
                             <a href="/profile"><img src={profile} alt="Logo" width="35px" height="35px"></img></a>
                         </div>
                         <div className="nav-right-item">
-                            <button className="btn-nav" onClick={handleLogout}>Sign out</button>
+                            <button className="button-29" onClick={handleLogout}>Sign out</button>
                         </div>
                     </div>
                     : 
-                    <button className="unsign-btn-nav" onClick={handleLogin}>Sign in</button>
+                    <button className="button-29" onClick={handleLogin}>Sign in</button>
                 }
             </div>
         </div>
