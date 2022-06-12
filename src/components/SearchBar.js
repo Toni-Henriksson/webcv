@@ -11,7 +11,7 @@ const SearchBar = () => {
         // TODO: logic to  check if route exists
         if(search !== ''){
             // Had to route to users profile this way, navigate() would cause problems in my UrlProfile component: It does not like multiple input data. 
-            window.open("/" + search)
+            window.location.replace("/" + search);
         }
     }
 
