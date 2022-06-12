@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import '../css/screens/url-profile.css';
 import NavigationBar from '../components/NavigationBar';
 import { useParams } from 'react-router-dom';
-import { getDatabase, onValue, ref } from "firebase/database";
+import { get, getDatabase, onValue, ref } from "firebase/database";
 import BasicTemplate from "../components/templates/basic-template/BasicTemplate";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -23,11 +23,12 @@ const UrlProfile = () => {
     const [skills, setSkills] = useState([]);
     const [about, setAbout] = useState("");
     const [infoFetch, setInfoFetch] = useState(false);
-    const [urlUserManual, setUrlUserManual] = useState("");
+    const [urlUserManual, setUrlUserManual] = useState('');
     const [data, setData] = useState([]);
 
     // TODO: Now just make BasicTemplate that takes info from user as props & render from screen :)
     useEffect(() => {
+        setUrlUserManual(params.username);
         onValue(ref(getDatabase(), 'userrouting/' + params.username), snapshot => {
             const data = snapshot.val();
             if (data !== null) {
@@ -38,13 +39,14 @@ const UrlProfile = () => {
                 console.log("No data receivsded from the backend of this user :(")
             }
             setDataReceived(true)
-        })
+        }) 
     }, []);
-    useEffect(() => {
+
+     useEffect(() => {
         if (dataReceived == true) {
             fetchUserData(user);
         }
-    }, [dataReceived]);
+    }, [dataReceived]); 
 
     function fetchUserData(uid) {
         const db = getDatabase();

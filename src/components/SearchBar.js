@@ -5,11 +5,16 @@ const SearchBar = () => {
     const searchIcon = require('../images/search.png');
     const [search, setSearch] = useState('');
     let navigation = useNavigate();
+
     const sub = (e) => {
-        //e.preventDefault();
+        e.preventDefault();
         // TODO: logic to  check if route exists
-        navigation("/" + search);
+        if(search !== ''){
+            // Had to route to users profile this way, navigate() would cause problems in my UrlProfile component: It does not like multiple input data. 
+            window.open("/" + search)
+        }
     }
+
   return (
     <div className="nav-middle">
         <form onSubmit={(event) => {sub(event)}}>
