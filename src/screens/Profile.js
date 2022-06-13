@@ -32,7 +32,6 @@ const Profile = () => {
     }
   }); 
 
-  // This is crashing the site
   function fetchUserData(uid) {
     const db = getDatabase();
 

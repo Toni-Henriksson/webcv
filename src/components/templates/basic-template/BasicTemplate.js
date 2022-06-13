@@ -28,6 +28,17 @@ const BasicTemplate = ({ templateData, experience, education, skills, about }) =
         const eduDB = ref(db, 'users/' + uid + '/edu');
         const aboutDB = ref(db, 'users/' + uid + '/about');
         const skillsDB = ref(db, 'users/' + uid + '/skills');
+        
+        onValue(ref(getDatabase(), 'users/' + uid), snapshot => {
+            const dataz = snapshot.val();
+            console.log("Data on: "+dataz.email)
+            if (dataz !== null) {
+                setData(dataz);
+            }
+            else {
+                console.log("No data from DB")
+            }
+        })
 
         // Work experience onValue listener
         onValue(workDB, (snapshot) => {
@@ -76,11 +87,11 @@ const BasicTemplate = ({ templateData, experience, education, skills, about }) =
         <div className="template-container">
             <div className="basic-template-header">
                 <div className="basic-template-header-left">
-                    <h1 style={{color: "black", fontSize: "35px"}}>{templateData ? templateData.fullname : null}</h1>
+                    <h1 style={{color: "black", fontSize: "35px"}}>{data.fullname}</h1>
                 </div>
                 <div className="basic-template-header-right">
-                    <p>email: {templateData ? templateData.email : null}</p>
-                    <p>phone: {templateData ? templateData.phoneNumber : null}</p>
+                    <p>email: {data.email}</p>
+                    <p>phone: {data.phoneNumber}</p>
                     <p>github: </p>
                 </div>
             </div>
