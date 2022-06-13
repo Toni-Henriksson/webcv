@@ -1,6 +1,7 @@
 import {React, useEffect} from "react";
 import '../css/components/frontpage.css';
 import { useNavigate } from "react-router-dom";
+import AnimatedText from "./animated-text/AnimatedText";
 
 const FrontPage = () => {
     let navigation = useNavigate();
@@ -13,7 +14,7 @@ const FrontPage = () => {
         <div className="front-page-container"> 
             <div className="front-page-container-left">
                 <div className="font-page-left-text">
-                    <h1 className="front-h1">WebResume</h1>
+                    <AnimatedText></AnimatedText>
                     <p className="front-p">Social network platform for beautiful resumes</p>
                     <p className="front-p">Create a profile and you will never have to send another PDF file in your life</p>
                 </div>
