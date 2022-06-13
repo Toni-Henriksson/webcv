@@ -87,11 +87,11 @@ const BasicTemplate = ({ templateData, experience, education, skills, about }) =
         <div className="template-container">
             <div className="basic-template-header">
                 <div className="basic-template-header-left">
-                    <h1 style={{color: "black", fontSize: "35px"}}>{data.fullname}</h1>
+                    <h1 style={{color: "black", fontSize: "35px"}}>{templateData ? templateData.fullname : data.fullname}</h1>
                 </div>
                 <div className="basic-template-header-right">
-                    <p>email: {data.email}</p>
-                    <p>phone: {data.phoneNumber}</p>
+                    <p>email: {templateData ? templateData.email : data.email}</p>
+                    <p>phone: {templateData ? templateData.phoneNumber : data.phoneNumber}</p>
                     <p>github: </p>
                 </div>
             </div>
