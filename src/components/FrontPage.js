@@ -1,11 +1,10 @@
 import {React, useEffect} from "react";
 import '../css/components/frontpage.css';
 import { useNavigate } from "react-router-dom";
-import Card from "./animated-card/Card";
 
 const FrontPage = () => {
     let navigation = useNavigate();
-     
+    const resumepng = require('../images/resume.png');
     const handleSignUp = () =>{
        navigation('/register');
     }
@@ -23,8 +22,7 @@ const FrontPage = () => {
                 </div>
             </div>
             <div className="front-page-container-right">
-                <Card>
-                </Card>
+                <img src={resumepng} alt="Logo" ></img>
             </div>
 
         </div>

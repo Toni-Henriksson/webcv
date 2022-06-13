@@ -6,7 +6,7 @@ import { logout } from "../backend/firebase-utility";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
-const logo = require('../images/webCV-logo.png');
+const logo = require('../images/logo.png');
 const profile = require('../images/profile.png');
 
 const NavigationBar = () => {
@@ -34,7 +34,9 @@ const NavigationBar = () => {
         <nav className="nav">
         <div className="nav-wrapper">
             <div className="nav-left">
-                <a href="/"><img src={logo} alt="Logo" width="100px" height="100px"></img></a>
+                <div className="mainlogo-container">
+                    <a href="/"><img src={logo} alt="Logo" width="100px" height="100px"></img></a>
+                </div>
             </div>
             <div className="nav-middle">
                 <SearchBar></SearchBar>

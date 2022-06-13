@@ -14,6 +14,7 @@ const Login = () => {
         login(loginEmail, loginPassword);
         navigation('/profile');
     }
+    
     return (
         <>
         <NavigationBar></NavigationBar>
@@ -21,7 +22,7 @@ const Login = () => {
             <div className="login-panel" style={{backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', objectFit: 'fill'}}>
                 <div className="login-items">
                     <input className="login-input" placeholder="Email address" onChange={ (event) => {setLoginEmail(event.target.value)} }></input>
-                    <input className="login-input" placeholder="Password" onChange={ (event) => {SetLoginPassword(event.target.value)} }></input>
+                    <input className="login-input" placeholder="Password" type="password" onChange={ (event) => {SetLoginPassword(event.target.value)} }></input>
                     <button className="login-btn-01" onClick={handleLogin}>Login</button>
                 </div>
             </div>
