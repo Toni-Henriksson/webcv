@@ -21,4 +21,22 @@
 .control-container{
     margin-bottom: 20px;
 }
-
+.left-conrols{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(41, 41, 41);
+    width: 20rem;
+    padding-top: 3%;
+    box-shadow: 2px 2px 0px 0px rgb(26, 26, 26);
+    border-top-right-radius: 25px;
+}
+.ctrl-btn{
+    color: #56c9ff;
+    border-color: #56c9ff;
+    height: 5rem;
+    background-color: rgb(41, 41, 41);
+    margin-bottom: 2rem;
+    font-size: 25px;
+    font-family: "JetBrains Mono",monospace;
+    margin: 5px;
+}

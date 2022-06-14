@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect} from "react";
 import { get, getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import '../css/screens/profile.css';
@@ -13,39 +13,22 @@ import AddSkillsWidget from "../components/user-data-fragment/add-skills-widget/
 
 const Profile = () => {
   const [template, setTemplate] = useState(0);
-  const author = getAuth();
-  const [infoFetch, setInfoFetch] = useState(false);
   const [data, setData] = useState([]);
 
   const templateArray = [
-    <BasicTemplate
-      templateData={data}
-    ></BasicTemplate>,
+    <BasicTemplate templateData={data} />,
   ];
 
-
-  onAuthStateChanged(author, (user) => {
-    if (user && infoFetch == false) {
-      const uid = user.uid;
-      //fetchUserData(uid);
-      setInfoFetch(true);
-    }
-  }); 
-
-  function fetchUserData(uid) {
-    const db = getDatabase();
-
-    // Basic information
-    onValue(ref(getDatabase(), 'users/' + uid), snapshot => {
-      const dataz = snapshot.val();
-      if (dataz !== null) {
-        setData(dataz);
-      }
-      else {
-        console.log("No data from DcB")
-      }
-    })
-
+  const controlScreens = [
+    <WorkExperience/>,
+    <AddEducationWidget/>,
+    <AddSkillsWidget/>,
+    <AddSkillsWidget/>,
+    <AddLinksWidget/>
+  ];
+  function handleClick(e){
+      //setCurrent(e)
+      console.log(e)
   }
 
   return (
@@ -53,23 +36,24 @@ const Profile = () => {
       <NavigationBar></NavigationBar>
       {/*<TemplateCarousel></TemplateCarousel>*/}
       <div className="profile-wrapper">
-        <div className="resume-preview-wrapper">{templateArray[template]}</div>
-        <div className="control-panel">
-          <div className="control-container">
-            <WorkExperience></WorkExperience>
-          </div>
-          <div className="control-container">
-            <AddEducationWidget></AddEducationWidget>
-          </div>
-          <div className="control-container">
-            <AddLinksWidget></AddLinksWidget>
-          </div>
-          <div className="control-container">
-            <AddTextWidget></AddTextWidget>
-          </div>
-          <div className="control-container">
-            <AddSkillsWidget></AddSkillsWidget>
-          </div>
+        <div className="left-conrols">
+          <button className="ctrl-btn" onClick={()=>{handleClick(0)}}>Add work</button>
+          <button className="ctrl-btn" onClick={()=>{handleClick(1)}}>Add education</button>
+          <button className="ctrl-btn" onClick={()=>{handleClick(2)}}>Add skills</button>
+          <button className="ctrl-btn" onClick={()=>{handleClick(3)}}>Add about</button>
+          <button className="ctrl-btn" onClick={()=>{handleClick(4)}}>Add links</button>
+        </div>
+        <div className="resume-preview-wrapper">
+        {
+          templateArray[template]
+        }
+        </div>
+        <div>
+          {
+            controlScreens.map((item, index) => {
+              return (controlScreens[index])
+            })
+          }
         </div>
       </div>
     </>

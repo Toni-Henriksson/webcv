@@ -3,12 +3,13 @@ import { getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import './basictemplate.css';
 
-const BasicTemplate = ({ templateData, experience, education, skills, about }) => {
+const BasicTemplate = ({ templateData, experience, education, skills, about}) => {
     const [info, setInfo] = useState([]);
     const [data, setData] = useState([]);
     const [pskills, setpSkills] = useState([]);
     const [pabout, setpAbout] = useState("");
     const [eduInfo, setEduInfo] = useState([]);
+    const [basicInfo, setBasicInfo] = useState({})
 
     const [infoFetch, setInfoFetch] = useState(false);
     const author = getAuth();
@@ -22,6 +23,7 @@ const BasicTemplate = ({ templateData, experience, education, skills, about }) =
         }
     }); 
 
+    // TODO: This is just a mess atm.(Works barely) Needs a better solution ASAP
     function fetchUserData(uid){
         const db = getDatabase();
         const workDB = ref(db, 'users/' + uid + '/exp');
@@ -31,9 +33,13 @@ const BasicTemplate = ({ templateData, experience, education, skills, about }) =
         
         onValue(ref(getDatabase(), 'users/' + uid), snapshot => {
             const dataz = snapshot.val();
-            console.log("Data on: "+dataz.email)
             if (dataz !== null) {
                 setData(dataz);
+                setBasicInfo({
+                    name: dataz.fullname,
+                    email: dataz.email,
+                    phone: dataz.phoneNumber,
+                  })
             }
             else {
                 console.log("No data from DB")
@@ -87,11 +93,11 @@ const BasicTemplate = ({ templateData, experience, education, skills, about }) =
         <div className="template-container">
             <div className="basic-template-header">
                 <div className="basic-template-header-left">
-                    <h1 style={{color: "black", fontSize: "35px"}}>{templateData ? templateData.fullname : data.fullname}</h1>
+                    <h1 style={{color: "black", fontSize: "35px"}}>{templateData.fullname ? templateData.fullname : data.fullname}</h1>
                 </div>
                 <div className="basic-template-header-right">
-                    <p>email: {templateData ? templateData.email : data.email}</p>
-                    <p>phone: {templateData ? templateData.phoneNumber : data.phoneNumber}</p>
+                    <p>email: {templateData.email ? templateData.email : basicInfo.email}</p>
+                    <p>phone: {templateData.phoneNumber ? templateData.phoneNumber : basicInfo.phone}</p>
                     <p>github: </p>
                 </div>
             </div>

@@ -70,12 +70,12 @@
     margin-left: 15px;
   align-items: center;
   appearance: none;
-  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #0485ff 100%);
+  background: linear-gradient(90deg, rgba(105,184,255,1) 0%, rgba(34,246,255,1) 0%, rgba(86,201,255,1) 47%);
   border: 0;
   border-radius: 6px;
   box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
   box-sizing: border-box;
-  color: #fff;
+  color: rgb(43, 43, 43);
   cursor: pointer;
   display: inline-flex;
   font-family: "JetBrains Mono",monospace;
@@ -96,6 +96,7 @@
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
+  font-weight:600;
 }
 
 .button-29:focus {
@@ -103,7 +104,7 @@
 }
 
 .button-29:hover {
-  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #81b3ff 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
