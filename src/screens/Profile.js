@@ -1,15 +1,9 @@
-import { React, useState, useEffect} from "react";
-import { get, getDatabase, onValue, ref } from "firebase/database";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { React, useState } from "react";
 import '../css/screens/profile.css';
 import NavigationBar from '../components/NavigationBar';
 import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
 import TemplateCarousel from "../components/TemplateCarousel";
-import WorkExperience from "../components/user-data-fragment/add-work-experience-widget/WorkExperience";
-import AddEducationWidget from "../components/user-data-fragment/add-education-widget/AddEducationWidget";
-import AddLinksWidget from "../components/user-data-fragment/add-links-widget/AddLinksWidget";
-import AddTextWidget from "../components/user-data-fragment/add-text-widget/AddTextWidget";
-import AddSkillsWidget from "../components/user-data-fragment/add-skills-widget/AddSkillsWidget";
+import { Slider } from "../components/component-slider/Slider";
 
 const Profile = () => {
   const [template, setTemplate] = useState(0);
@@ -19,13 +13,6 @@ const Profile = () => {
     <BasicTemplate templateData={data} />,
   ];
 
-  const controlScreens = [
-    <WorkExperience/>,
-    <AddEducationWidget/>,
-    <AddSkillsWidget/>,
-    <AddSkillsWidget/>,
-    <AddLinksWidget/>
-  ];
   function handleClick(e){
       //setCurrent(e)
       console.log(e)
@@ -48,13 +35,7 @@ const Profile = () => {
           templateArray[template]
         }
         </div>
-        <div>
-          {
-            controlScreens.map((item, index) => {
-              return (controlScreens[index])
-            })
-          }
-        </div>
+        <Slider></Slider>
       </div>
     </>
   );
