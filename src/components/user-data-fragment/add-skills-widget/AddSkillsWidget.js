@@ -29,11 +29,9 @@ const AddSkillsWidget = () => {
         <form
           onSubmit={(event) => {sub(event)}}>
             <div className="section">
-            <label className="label">Skill
-              <input type="text" placeholder="Skill"
+              <input type="text" placeholder="Example: Excel, Powerpoint"
                 onChange={(e)=>{setSkill(e.target.value)}} value={skill} />
                 <br/>
-            </label>
             </div>
             <button type="submit" className="experience-submit-btn">Submit</button>
         </form>

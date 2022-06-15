@@ -29,11 +29,9 @@ const AddTextWidget = () => {
         <form
           onSubmit={(event) => {sub(event)}}>
             <div className="section">
-            <label className="label">About text
-              <input type="text" placeholder="Tell something relevant" multiple="true"
+              <textarea type="text" placeholder="Tell something relevant" multiple="true" style={{height: "140px", width: "100%", textAlign: "left"}}
                 onChange={(e)=>{setText(e.target.value)}} value={text} />
                 <br/>
-            </label>
             </div>
             <button type="submit" className="experience-submit-btn">Submit</button>
         </form>

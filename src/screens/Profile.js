@@ -18,7 +18,7 @@ const Profile = () => {
       <NavigationBar></NavigationBar>
       <div className="profile-wrapper">
         <div className="left-conrols">
-          <h1 style={{color: "white", alignSelf: "center", fontSize: "25px"}}>Build resume</h1>
+          <h1 style={{color: "white", alignSelf: "center", fontSize: "25px", fontFamily: "JetBrains Mono, monospace"}}>Build your resume</h1>
           <Slider></Slider>
         </div>
         <div className="resume-preview-wrapper">

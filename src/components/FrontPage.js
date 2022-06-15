@@ -19,7 +19,7 @@ const FrontPage = () => {
                     <p className="front-p">Create a profile and you will never have to send another PDF file in your life</p>
                 </div>
                 <div className="front-page-left-buttons">
-                    <button className="button-29" style={{width: "15%", fontSize: "25px"}} onClick={handleSignUp}>Sign up</button>
+                    <button className="front-page-btn" onClick={handleSignUp}>Sign up</button>
                 </div>
             </div>
             <div className="front-page-container-right">
