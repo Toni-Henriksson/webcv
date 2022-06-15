@@ -1,5 +1,5 @@
 # Social media style Resume hosting platform. 
-## Visit my profile page to view my resume: <https://cloudresumely.netlify.app/tonihenriksson>
+## (Early alpha) Visit my profile page to view my resume: <https://cloudresumely.netlify.app/tonihenriksson>
 ### Functionality for: 
 1. Sign up & make a profile 
 2. Visit other peoples profiles to view their resume & profile
