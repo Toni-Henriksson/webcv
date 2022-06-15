@@ -3,14 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
   flex-direction: column;
-  background: #DAF7A6;
+  background: rgb(41, 41, 41);
   overflow: hidden;
 }
 
 .frame {
-  border: 10px solid #FF8E00;
-  width: 500px;
+  width: 350px;
   overflow: hidden;
 }
 
@@ -20,12 +20,10 @@
 
 .box {
   box-sizing: border-box;
-  border: 5px solid #FFF;
-  background: #00E7FF;
-  width: 500px;
-  height: 500px;
+  width: 350px;
+  height: 350px;
   flex-shrink: 0;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
 }
@@ -59,5 +57,5 @@
 }
 
 .active {
-  background: #999;
+  background: #56c9ff;
 }

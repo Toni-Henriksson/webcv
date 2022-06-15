@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import '../css/screens/profile.css';
 import NavigationBar from '../components/NavigationBar';
 import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
@@ -13,31 +13,21 @@ const Profile = () => {
     <BasicTemplate templateData={data} />,
   ];
 
-  function handleClick(e){
-      //setCurrent(e)
-      console.log(e)
-  }
-
   return (
     <>
       <NavigationBar></NavigationBar>
-      {/*<TemplateCarousel></TemplateCarousel>*/}
       <div className="profile-wrapper">
         <div className="left-conrols">
-          <button className="ctrl-btn" onClick={()=>{handleClick(0)}}>Add work</button>
-          <button className="ctrl-btn" onClick={()=>{handleClick(1)}}>Add education</button>
-          <button className="ctrl-btn" onClick={()=>{handleClick(2)}}>Add skills</button>
-          <button className="ctrl-btn" onClick={()=>{handleClick(3)}}>Add about</button>
-          <button className="ctrl-btn" onClick={()=>{handleClick(4)}}>Add links</button>
+          <h1 style={{color: "white", alignSelf: "center", fontSize: "25px"}}>Build resume</h1>
+          <Slider></Slider>
         </div>
         <div className="resume-preview-wrapper">
         {
           templateArray[template]
         }
         </div>
-        <Slider></Slider>
       </div>
-    </>
+      </>
   );
 }
 

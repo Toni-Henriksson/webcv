@@ -9,7 +9,7 @@ import AddLinksWidget from '../user-data-fragment/add-links-widget/AddLinksWidge
 
 const TOTAL_SLIDES = 4 // n-1 in Array
 
-export const Slider = (component) => {
+export const Slider = () => {
   const [current, setCurrent] = useState(0)
   const ref = useRef(null)
   
@@ -33,8 +33,9 @@ export const Slider = (component) => {
   }, [current])
   
   return (
+    <>
     <div className='wrapper'>
-      <p>{current}</p>
+      <p></p>
       <div className='frame'>
         <div className='box-container' ref={ref}>
           <div className='box'><WorkExperience></WorkExperience></div>
@@ -59,5 +60,6 @@ export const Slider = (component) => {
         ))}
       </div>
     </div>
-  )
+    </>
+  );
 }

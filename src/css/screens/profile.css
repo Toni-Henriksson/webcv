@@ -6,10 +6,10 @@
 }
 .resume-preview-wrapper{
     display: flex;
-    justify-content: center;
     margin-top: 0%;
+    margin-left: 15%;
     height: 900px;
-    width: 60%;
+    width: 70%;
 }
 .control-panel{
     width: 40%;
@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     background-color: rgb(41, 41, 41);
-    width: 20rem;
+    width: 20%;
     padding-top: 3%;
     box-shadow: 2px 2px 0px 0px rgb(26, 26, 26);
     border-top-right-radius: 25px;
