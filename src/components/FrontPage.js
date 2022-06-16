@@ -1,4 +1,4 @@
-import {React, useEffect} from "react";
+import { React } from "react";
 import '../css/components/frontpage.css';
 import { useNavigate } from "react-router-dom";
 import AnimatedText from "./animated-text/AnimatedText";
@@ -9,6 +9,7 @@ const FrontPage = () => {
     const handleSignUp = () =>{
        navigation('/register');
     }
+
     return (
         <>
         <div className="front-page-container"> 

@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { fetchUserData } from "../../../backend/datafetch";
 import './basictemplate.css';
 
 const BasicTemplate = ({ templateData, experience, education, skills, about}) => {
@@ -11,20 +12,26 @@ const BasicTemplate = ({ templateData, experience, education, skills, about}) =>
     const [eduInfo, setEduInfo] = useState([]);
     const [basicInfo, setBasicInfo] = useState({})
 
+    const [test, setTest] = useState([]);
+
     const [infoFetch, setInfoFetch] = useState(false);
     const author = getAuth();
 
     onAuthStateChanged(author, (user)=>{
-        // If user navigates to his own profiles url
         if(user && infoFetch == false){
             const uid = user.uid;
-            fetchUserData(uid);
+            fetchUserData2(uid)
             setInfoFetch(true);
         }
     }); 
 
+    const updateUserData = (uid) => {
+        let m = fetchUserData(uid);
+        setTest(m);
+    }
+
     // TODO: This is just a mess atm.(Works barely) Needs a better solution ASAP
-    function fetchUserData(uid){
+    function fetchUserData2(uid){
         const db = getDatabase();
         const workDB = ref(db, 'users/' + uid + '/exp');
         const eduDB = ref(db, 'users/' + uid + '/edu');
@@ -98,7 +105,7 @@ const BasicTemplate = ({ templateData, experience, education, skills, about}) =>
                 <div className="basic-template-header-right">
                     <p>email: {templateData.email ? templateData.email : basicInfo.email}</p>
                     <p>phone: {templateData.phoneNumber ? templateData.phoneNumber : basicInfo.phone}</p>
-                    <p>github: </p>
+                    <p>github:{}</p>
                 </div>
             </div>
 
