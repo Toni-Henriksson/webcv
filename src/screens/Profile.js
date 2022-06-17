@@ -5,7 +5,7 @@ import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
 import TemplateCarousel from "../components/TemplateCarousel";
 import { Slider } from "../components/component-slider/Slider";
 import RetroTemplate from "../components/templates/retro-template/RetroTemplate";
-import { fetchUserData } from "../backend/datafetch";
+import { fetchUserData, fetchMyAPI } from "../backend/datafetch";
 import { auth } from "../backend/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -19,9 +19,13 @@ const Profile = () => {
   });
 
   useEffect(() => {
-    let resp = fetchUserData()
-    console.log(resp)
+    fz()
   }, []) 
+  async function fz() {
+    let resp = await fetchMyAPI()
+    setFData(resp)
+    console.log(resp)
+  }
 
   const templateArray = [
     <BasicTemplate templateData={data} />,
