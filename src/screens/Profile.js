@@ -5,30 +5,35 @@ import BasicTemplate from '../components/templates/basic-template/BasicTemplate'
 import TemplateCarousel from "../components/TemplateCarousel";
 import { Slider } from "../components/component-slider/Slider";
 import RetroTemplate from "../components/templates/retro-template/RetroTemplate";
-import { fetchUserData, fetchMyAPI } from "../backend/datafetch";
 import { auth } from "../backend/firebase-config";
-import { onAuthStateChanged } from "firebase/auth";
+import { getDatabase, onValue, ref, get, child } from "firebase/database";
 
 const Profile = () => {
-  const [template, setTemplate] = useState(0);
+  const [template, setTemplate] = useState(1);
   const [data, setData] = useState([]);
-  const [fData, setFData] = useState({
-    email: "x",
-    phone: "x",
-    fullname: "x",
-  });
+  const [fData, setFData] = useState({});
 
   useEffect(() => {
-    fz()
+    fetch();
   }, []) 
-  async function fz() {
-    let resp = await fetchMyAPI()
-    setFData(resp)
-    console.log(resp)
+
+  function fetch() {
+    const db = getDatabase();
+    const uid = "9YLedffRfFQMCuOXxv9aiXRMSQz2";
+    const dbRef = ref(db);
+    
+    get(child(dbRef, "users/" + uid))
+    .then((snapshot) => {
+      let data = []
+      data = snapshot.val()
+      setFData(data)
+    })
+    console.log(fData)
   }
 
   const templateArray = [
     <BasicTemplate templateData={data} />,
+    <RetroTemplate profileData={fData}></RetroTemplate>
   ];
 
   return (
@@ -44,7 +49,6 @@ const Profile = () => {
           templateArray[template]
         }
         </div>
-        <RetroTemplate profileData={fData}></RetroTemplate>
       </div>
       </>
   );

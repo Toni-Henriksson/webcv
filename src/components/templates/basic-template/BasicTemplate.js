@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { fetchUserData } from "../../../backend/datafetch";
 import './basictemplate.css';
 
 const BasicTemplate = ({ templateData, experience, education, skills, about}) => {
@@ -11,9 +10,6 @@ const BasicTemplate = ({ templateData, experience, education, skills, about}) =>
     const [pabout, setpAbout] = useState("");
     const [eduInfo, setEduInfo] = useState([]);
     const [basicInfo, setBasicInfo] = useState({})
-
-    const [test, setTest] = useState([]);
-
     const [infoFetch, setInfoFetch] = useState(false);
     const author = getAuth();
 
@@ -24,11 +20,6 @@ const BasicTemplate = ({ templateData, experience, education, skills, about}) =>
             setInfoFetch(true);
         }
     }); 
-
-    const updateUserData = (uid) => {
-        let m = fetchUserData(uid);
-        setTest(m);
-    }
 
     // TODO: This is just a mess atm.(Works barely) Needs a better solution ASAP
     function fetchUserData2(uid){
