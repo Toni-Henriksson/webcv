@@ -2,7 +2,7 @@ import './retrotemplate.css';
 import { React, useState, useEffect } from "react";
 
 const RetroTemplate = ({profileData, urlProfileData}) => {
-    const [experience, setExperience] = useState({})
+    const [experience, setExperience] = useState([])
     useEffect(() => {
         renderData()
     }, [profileData])
@@ -10,8 +10,9 @@ const RetroTemplate = ({profileData, urlProfileData}) => {
     const renderData = () => {
         if(profileData.exp){
             Object.keys(profileData.exp).map(x => {
-                let item = [profileData.exp[x].title, profileData.exp[x].duration, profileData.exp[x].description]
+                let item = [profileData.exp[x].title, profileData.exp[x].duration,profileData.exp[x].description]
                 setExperience(item)
+                //experience.push(item)
             })
         }
     }
@@ -26,6 +27,7 @@ const RetroTemplate = ({profileData, urlProfileData}) => {
             <h1>{experience[0]}</h1>
             <p>{experience[1]}</p>
             <p>{experience[2]}</p>
+            {console.log(experience)}
         </div>
         </div>
         </>
