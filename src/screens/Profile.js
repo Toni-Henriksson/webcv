@@ -6,12 +6,12 @@ import TemplateCarousel from "../components/TemplateCarousel";
 import { Slider } from "../components/component-slider/Slider";
 import RetroTemplate from "../components/templates/retro-template/RetroTemplate";
 import { auth } from "../backend/firebase-config";
-import { getDatabase, onValue, ref, get, child } from "firebase/database";
+import { getDatabase, ref, get, child } from "firebase/database";
 
 const Profile = () => {
   const [template, setTemplate] = useState(1);
   const [data, setData] = useState([]);
-  const [fData, setFData] = useState({});
+  const [fetchedData, setFetchedData] = useState({});
 
   useEffect(() => {
     fetch();
@@ -21,19 +21,18 @@ const Profile = () => {
     const db = getDatabase();
     const uid = "9YLedffRfFQMCuOXxv9aiXRMSQz2";
     const dbRef = ref(db);
-    
+
     get(child(dbRef, "users/" + uid))
     .then((snapshot) => {
       let data = []
       data = snapshot.val()
-      setFData(data)
+      setFetchedData(data)
     })
-    console.log(fData)
   }
 
   const templateArray = [
     <BasicTemplate templateData={data} />,
-    <RetroTemplate profileData={fData}></RetroTemplate>
+    <RetroTemplate profileData={fetchedData}></RetroTemplate>
   ];
 
   return (
